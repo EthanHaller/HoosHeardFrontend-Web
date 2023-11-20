@@ -1,1 +1,1 @@
-# HoosHeardFrontend-Web
+# HoosHeard Web Frontend
