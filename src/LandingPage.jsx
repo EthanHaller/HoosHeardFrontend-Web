@@ -1,14 +1,19 @@
 import React from "react"
-import { GoogleLogin } from "@react-oauth/google"
 import axios from "axios"
+import { GoogleLogin } from "@react-oauth/google"
+import { useAuth } from "./AuthProvider"
 
 export default function LandingPage() {
+	const { login } = useAuth()
+
 	const handleGoogleLogin = (credentialResponse) => {
-		console.log(process.env.REACT_APP_BACKEND_URL)
-		axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/google/login`, credentialResponse, {
-			"Content-Type": "application/json",
-		})
-		.then(res => console.log(res))
+		axios
+			.post(`${process.env.REACT_APP_BACKEND_URL}/auth/google/login`, credentialResponse, {
+				"Content-Type": "application/json",
+			})
+			.then((res) => {
+				login(res.data.user)
+			})
 	}
 
 	return (
