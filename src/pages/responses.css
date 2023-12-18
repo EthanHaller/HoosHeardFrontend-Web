@@ -1,0 +1,22 @@
+.semicircle {
+    top: 0;
+    left: 0;
+    width:  calc(100% + var(--bs-gutter-x));
+    height: 8em;
+    border-radius: 0 0 45% 45%;
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8em;
+  }
+  
+  .logo img {
+    max-width: 60%;
+    max-height: 60%;
+    width: auto;
+  }

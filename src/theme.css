@@ -1,0 +1,22 @@
+:root{
+    --lightest: #FEF5EC;
+    --medium: #FBE0C3;
+    --dark: #FFBB98;
+    --text-color: #273841;
+}
+
+.lightest {
+    background-color: var(--lightest);
+}
+
+.medium {
+    background-color: var(--medium);
+}
+
+.dark {
+    background-color: var(--dark);
+}
+
+.text {
+    color: var(--text-color);
+}
