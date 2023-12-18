@@ -13,9 +13,12 @@ export default function Responses() {
 								<img src={logoImage} alt="Logo" />
 							</div>
 						</div>
-						<div className="d-flex justify-content-center">
-							<h2 className="text" style={{ fontSize: "5rem", maxWidth: "100%" }}>
+						<div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "calc(100% - 8em)" }}>
+							<h2 className="text m-0" style={{ fontSize: "5vw", maxWidth: "100%", letterSpacing: ".7rem" }}>
 								ANONYMOUS
+							</h2>
+							<h2 className="text" style={{ fontSize: "3.75vw", maxWidth: "100%", letterSpacing: ".5rem"}}>
+								RESPONSES TO...
 							</h2>
 						</div>
 					</div>

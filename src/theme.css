@@ -5,6 +5,13 @@
     --text-color: #273841;
 }
 
+@font-face {
+    font-family: 'Bauhaus';
+    src: url('./fonts/BauhausITCbyBT-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 .lightest {
     background-color: var(--lightest);
 }
@@ -19,4 +26,5 @@
 
 .text {
     color: var(--text-color);
+    font-family: 'Bauhaus', sans-serif;
 }
