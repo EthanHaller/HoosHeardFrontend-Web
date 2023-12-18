@@ -20,3 +20,28 @@
     max-height: 50%;
     width: auto;
   }
+
+  .prompt-display-container {
+    height: calc(100% - 8em);
+  }
+
+  .anonymous-text {
+    font-size: 5vw;
+    max-width: 100%;
+    letter-spacing: .7rem;
+  }
+
+  .responses-to-text {
+    font-size: 3.75vw;
+    max-width: 100%;
+    letter-spacing: .5rem;
+  }
+
+  .prompt-container {
+    width: calc(100% + var(--bs-gutter-x));
+    font-size: 1vw;
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    text-wrap: wrap;
+  }

@@ -13,13 +13,16 @@ export default function Responses() {
 								<img src={logoImage} alt="Logo" />
 							</div>
 						</div>
-						<div className="d-flex flex-column justify-content-center align-items-center" style={{ height: "calc(100% - 8em)" }}>
-							<h2 className="text m-0" style={{ fontSize: "5vw", maxWidth: "100%", letterSpacing: ".7rem" }}>
-								ANONYMOUS
-							</h2>
-							<h2 className="text" style={{ fontSize: "3.75vw", maxWidth: "100%", letterSpacing: ".5rem"}}>
-								RESPONSES TO...
-							</h2>
+						<div className="d-flex flex-column justify-content-center align-items-center prompt-display-container">
+							<h2 className="text m-0 anonymous-text">ANONYMOUS</h2>
+							<h2 className="text responses-to-text">RESPONSES TO...</h2>
+							<div className="medium prompt-container">
+								<h5 className="text p-3">
+									This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This
+									is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a
+									sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt
+								</h5>
+							</div>
 						</div>
 					</div>
 					<div className="col-lg-7 h-100 lightest"></div>
