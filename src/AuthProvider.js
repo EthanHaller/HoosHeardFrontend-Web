@@ -21,13 +21,14 @@ const AuthProvider = ({ children }) => {
 	}
 
 	useEffect(() => {
+		if(user) return
 		const storedUser = JSON.parse(localStorage.getItem("user"))
 		if (storedUser) {
 			setUser(storedUser)
 			localStorage.setItem("user", JSON.stringify(storedUser))
-			navigate("/home")
 		}
-	}, [navigate])
+		else navigate("/")
+	}, [user, navigate])
 
 	return (
 		<AuthContext.Provider value={{ user, login, logout }}>

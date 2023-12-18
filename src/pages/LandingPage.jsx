@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 import { GoogleLogin } from "@react-oauth/google"
-import { useAuth } from "./AuthProvider"
+import { useAuth } from "../AuthProvider"
 
 export default function LandingPage() {
 	const { login } = useAuth()
