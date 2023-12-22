@@ -3,11 +3,14 @@ import "./responses.css"
 import logoImage from "../images/HoosHeardLogoDark.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircle, faHeart, faComment } from "@fortawesome/free-solid-svg-icons"
-import { faHeart as faUnliked, faComment as faUncommented } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/free-regular-svg-icons"
 
 export default function Responses() {
 	const responseCards = testResponses.map((response) => {
 		const timeAgo = calculateTimeAgo(response.timesstamp)
+		const numLikes = nFormatter(response.likes, 1)
+		const numComments = nFormatter(response.comments, 1)
+
 		return (
 			<div key={response.id} className="card mb-3">
 				<div className="card-body">
@@ -17,14 +20,21 @@ export default function Responses() {
 						<h6 className="m-0 text-secondary"> {timeAgo}</h6>
 					</div>
 					<p className="card-text">{response.text}</p>
-					<div className="d-flex justify-content-end align-items-end">
-						<div className="d-flex flex-column mx-2">
-							<FontAwesomeIcon icon={faUnliked} className="text-primary unliked"/>
-							<p className="m-0 text-primary">{response.likes}</p>
-						</div>
-						<div className="d-flex flex-column mx-2">
-							<FontAwesomeIcon icon={faUncommented} className="text-primary"/>
-							<p className="m-0 text-primary">{response.comments}</p>
+					<div className="container-fluid">
+						<div className="row">
+							<div className="col-10"></div>
+							<div className="col-1 p-0">
+								<div className="d-flex flex-column">
+									<FontAwesomeIcon icon={faUnliked} className="text-primary unliked" />
+									<p className="m-0 text-primary text-center">{numLikes}</p>
+								</div>
+							</div>
+							<div className="col-1 p-0">
+								<div className="d-flex flex-column">
+									<FontAwesomeIcon icon={faUncommented} className="text-primary" />
+									<p className="m-0 text-primary text-center">{numComments}</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -82,12 +92,33 @@ function calculateTimeAgo(timesstamp) {
 	}
 }
 
+//https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900
+function nFormatter(num, digits) {
+	const lookup = [
+		{ value: 1, symbol: "" },
+		{ value: 1e3, symbol: "k" },
+		{ value: 1e6, symbol: "M" },
+		{ value: 1e9, symbol: "G" },
+		{ value: 1e12, symbol: "T" },
+		{ value: 1e15, symbol: "P" },
+		{ value: 1e18, symbol: "E" },
+	]
+	const rx = /\.0+$|(\.[0-9]*[1-9])0+$/
+	var item = lookup
+		.slice()
+		.reverse()
+		.find(function (item) {
+			return num >= item.value
+		})
+	return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0"
+}
+
 const testResponses = [
 	{
 		id: 1,
 		timesstamp: "2023-12-22T17:54:34.454Z",
 		likes: 123,
-		comments: 124,
+		comments: 124100,
 		text: "this is a sample response",
 	},
 	{
