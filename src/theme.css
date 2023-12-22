@@ -3,6 +3,7 @@
     --medium: #FBE0C3;
     --dark: #FFBB98;
     --text-color: #273841;
+    --text-secondary: #5C7C8D;
 }
 
 @font-face {
@@ -24,7 +25,12 @@
     background-color: var(--dark);
 }
 
-.text {
-    color: var(--text-color);
+.text-primary {
+    color: var(--text-color) !important;
+    font-family: 'Bauhaus', sans-serif;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
     font-family: 'Bauhaus', sans-serif;
 }

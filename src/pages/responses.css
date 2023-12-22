@@ -45,3 +45,25 @@
     padding-bottom: 3em;
     text-wrap: wrap;
   }
+
+  .circle-icon {
+    font-size: 0.5em;
+    margin: 0 0.8em;
+    color: #5C7C8D;
+  }
+
+  .unliked {
+    fill: none;
+  }
+
+  .uncommented {
+
+  }
+
+  .liked {
+
+  }
+
+  .commented {
+
+  }
