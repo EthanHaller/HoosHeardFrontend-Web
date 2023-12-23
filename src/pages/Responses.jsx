@@ -1,15 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 import "./responses.css"
 import logoImage from "../images/HoosHeardLogoDark.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircle, faHeart, faComment } from "@fortawesome/free-solid-svg-icons"
+import { faCircle, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/free-regular-svg-icons"
 
 export default function Responses() {
+	const [liked, setLiked] = new useState(testUserLikes)
+
+	const handleLikeUnlike = (postId) => {
+		const nextSet = new Set(liked)
+		if(liked.has(postId)) {
+			nextSet.delete(postId)
+		}
+		else nextSet.add(postId)
+		setLiked(nextSet)
+	}
+
 	const responseCards = testResponses.map((response) => {
 		const timeAgo = calculateTimeAgo(response.timesstamp)
 		const numLikes = nFormatter(response.likes, 1)
 		const numComments = nFormatter(response.comments, 1)
+		const isLiked = liked.has(response.id)
 
 		return (
 			<div key={response.id} className="card mb-3">
@@ -25,14 +37,18 @@ export default function Responses() {
 							<div className="col-10"></div>
 							<div className="col-1 p-0">
 								<div className="d-flex flex-column">
-									<FontAwesomeIcon icon={faUnliked} className="text-primary unliked" />
-									<p className="m-0 text-primary text-center">{numLikes}</p>
+									<button className="btn p-0" onClick={() => handleLikeUnlike(response.id)}>
+										<FontAwesomeIcon icon={isLiked ? faHeart : faUnliked} className="text-primary" />
+										<p className="m-0 text-primary text-center">{numLikes}</p>
+									</button>
 								</div>
 							</div>
 							<div className="col-1 p-0">
 								<div className="d-flex flex-column">
-									<FontAwesomeIcon icon={faUncommented} className="text-primary" />
-									<p className="m-0 text-primary text-center">{numComments}</p>
+									<button className="btn p-0">
+										<FontAwesomeIcon icon={faUncommented} className="text-primary" />
+										<p className="m-0 text-primary text-center">{numComments}</p>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -64,7 +80,18 @@ export default function Responses() {
 							</div>
 						</div>
 					</div>
-					<div className="col-lg-7 h-100 lightest">{responseCards}</div>
+					<div className="col-lg-7 h-100 lightest">
+						<span className="d-flex align-items-center mt-2 mb-3">
+							<button className="btn">
+								Hot
+							</button>
+							<p className="text-center p-0 m-0">|</p>
+							<button className="btn">
+								Recent
+							</button>
+						</span>
+						{responseCards}
+					</div>
 				</div>
 			</div>
 		</>
@@ -136,3 +163,5 @@ const testResponses = [
 		text: "woah look at this response",
 	},
 ]
+
+const testUserLikes = new Set([2, 3])
