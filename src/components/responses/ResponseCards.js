@@ -5,21 +5,33 @@ import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/f
 
 import "../../styles/responses.css"
 
-
 export default function ResponseCards() {
-    const [liked, setLiked] = new useState(testUserLikes)
+	const [responses, setResponses] = useState(testResponses)
+	const [liked, setLiked] = useState(testUserLikes)
+	const [sortOption, setSortOption] = useState("hot")
 
 	const handleLikeUnlike = (postId) => {
 		const nextSet = new Set(liked)
-		if(liked.has(postId)) {
+		if (liked.has(postId)) {
 			nextSet.delete(postId)
-		}
-		else nextSet.add(postId)
+		} else nextSet.add(postId)
 		setLiked(nextSet)
 	}
 
-	const responseCards = testResponses.map((response) => {
-		const timeAgo = calculateTimeAgo(response.timesstamp)
+	const handleSort = (option) => {
+		setSortOption(option)
+	}
+
+	const responsesSorted = [...responses].sort((a, b) => {
+		if (sortOption === "recent") {
+			return new Date(b.timestamp) - new Date(a.timestamp)
+		} else {
+			return b.likes - a.likes
+		}
+	})
+
+	const responseCards = responsesSorted.map((response) => {
+		const timeAgo = calculateTimeAgo(response.timestamp)
 		const numLikes = nFormatter(response.likes, 1)
 		const numComments = nFormatter(response.comments, 1)
 		const isLiked = liked.has(response.id)
@@ -59,18 +71,25 @@ export default function ResponseCards() {
 		)
 	})
 
-    return (
-        <>
-            <div>
-                {responseCards}
-            </div>
-        </>
-    )
+	return (
+		<>
+			<span className="d-flex align-items-center mt-2 mb-3">
+				<button className={`btn ${sortOption === "hot" ? "active" : ""}`} onClick={() => handleSort("hot")}>
+					Hot
+				</button>
+				<p className="text-center p-0 m-0">|</p>
+				<button className={`btn ${sortOption === "recent" ? "active" : ""}`} onClick={() => handleSort("recent")}>
+					Recent
+				</button>
+			</span>
+			<div>{responseCards}</div>
+		</>
+	)
 }
 
-function calculateTimeAgo(timesstamp) {
+function calculateTimeAgo(timestamp) {
 	const now = new Date()
-	const posted = new Date(timesstamp)
+	const posted = new Date(timestamp)
 
 	var ms_Min = 60 * 1000
 	var ms_Hour = ms_Min * 60
@@ -113,22 +132,22 @@ function nFormatter(num, digits) {
 const testResponses = [
 	{
 		id: 1,
-		timesstamp: "2023-12-22T17:54:34.454Z",
+		timestamp: "2023-12-22T17:54:34.454Z",
 		likes: 123,
 		comments: 124100,
 		text: "this is a sample response",
 	},
 	{
 		id: 2,
-		timesstamp: "2023-12-22T16:54:34.454Z",
-		likes: 123,
+		timestamp: "2023-12-22T16:54:34.454Z",
+		likes: 512,
 		comments: 124,
 		text: "this is another sample response",
 	},
 	{
 		id: 3,
-		timesstamp: "2023-12-22T15:54:34.454Z",
-		likes: 123,
+		timestamp: "2023-12-22T15:54:34.454Z",
+		likes: 548923,
 		comments: 124,
 		text: "woah look at this response",
 	},

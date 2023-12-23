@@ -29,15 +29,6 @@ export default function Responses() {
 						</div>
 					</div>
 					<div className="col-lg-7 h-100 lightest">
-						<span className="d-flex align-items-center mt-2 mb-3">
-							<button className="btn">
-								Hot
-							</button>
-							<p className="text-center p-0 m-0">|</p>
-							<button className="btn">
-								Recent
-							</button>
-						</span>
 						<ResponseCards />
 					</div>
 				</div>
