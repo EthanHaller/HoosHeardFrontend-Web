@@ -11,6 +11,7 @@ export default function Home() {
 			<h3>User Data:</h3>
 			<p>{JSON.stringify(user)}</p>
 			<Link to='/responses'>User reponses</Link>
+			<Link to='/reveal'>Prompt Reveal</Link>
 			<button onClick={() => logout()}>Logout</button>
 		</>
 	)
