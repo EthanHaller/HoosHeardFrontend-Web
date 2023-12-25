@@ -1,6 +1,7 @@
 import React from "react"
 import logoImage from "../images/HoosHeardLogoDark.png"
 import "../styles/reveal.css"
+import { Link } from "react-router-dom"
 
 export default function PromptReveal() {
 	return (
@@ -17,12 +18,13 @@ export default function PromptReveal() {
 					</div>
 				</div>
 				<div className="container-fluid view-height lightest d-flex flex-column">
-					<div className="d-flex justify-content-center align-items-center flex-grow-1">
+					<div className="d-flex flex-column justify-content-center align-items-center flex-grow-1">
 						<h2 className="text-primary text-center p-3" style={{ maxWidth: "75ch" }}>
 							This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a
 							sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily
 							prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt
 						</h2>
+						<Link className="" to="/my-answer">Write your response</Link>
 					</div>
 				</div>
 			</div>
