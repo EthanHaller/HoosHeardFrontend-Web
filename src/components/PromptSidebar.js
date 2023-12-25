@@ -12,7 +12,7 @@ export default function PromptSidebar({displayText}) {
                 <div className="flex-grow-1"></div>
                 <h2 className="text-primary sidebar-text">{displayText}</h2>
 				<div className="medium prompt-container">
-					<h5 className="text-primary p-3">
+					<h5 className="text-primary p-3 prompt-text">
 						This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample
 						daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt
 						This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt

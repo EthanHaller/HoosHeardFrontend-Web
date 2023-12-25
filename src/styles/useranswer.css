@@ -1,0 +1,22 @@
+.custom-textarea {
+	background-color: var(--lightest);
+	border: 2px solid var(--dark);
+	color: var(--text-color);
+	font-family: "Bauhaus", sans-serif;
+	padding: 1rem;
+	resize: none;
+    font-size: 1.25em;
+	transition: border-color 0.3s ease;
+}
+
+.custom-textarea:focus {
+	border-color: var(--text-color);
+}
+
+.textarea-label {
+    font-size: 1.8em;
+}
+
+.submit-button {
+    font-size: 1.25em;
+}
