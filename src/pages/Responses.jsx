@@ -10,7 +10,7 @@ export default function Responses() {
 		<>
 			<div className="container-fluid">
 				<div className="row view-height">
-					<PromptSidebar />
+					<PromptSidebar displayText={"ANONYMOUS RESPONSES TO..."}/>
 					<div className="col-lg-7 h-100 lightest">
 						<ResponseCards />
 					</div>

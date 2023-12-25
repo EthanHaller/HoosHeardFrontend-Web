@@ -1,9 +1,14 @@
 import React from "react"
+import PromptSidebar from "../components/PromptSidebar"
 
 export default function UserAnswer() {
 	return (
 		<>
-			<h1>User answer</h1>
+			<div className="container-fluid">
+				<div className="row view-height">
+				<PromptSidebar displayText={"MY RESPONSE TO..."}/>
+				</div>
+			</div>
 		</>
 	)
 }
