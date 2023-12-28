@@ -14,9 +14,7 @@ export default function LandingPage() {
 			.post(`${process.env.REACT_APP_BACKEND_URL}/auth/google/login`, credentialResponse, {
 				"Content-Type": "application/json",
 			})
-			.then((res) => {
-				login(res.data)
-			})
+			.then((res) => login(res.data))
 	}
 
 	return (

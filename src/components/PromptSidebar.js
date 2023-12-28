@@ -1,9 +1,6 @@
-import useFetch from "../hooks/useFetch"
 import logoImage from "../images/HoosHeardLogoDark.png"
 
-export default function PromptSidebar({ displayText }) {
-	const { data, isLoading, error } = useFetch("/prompts/latest")
-
+export default function PromptSidebar({ displayText, data, isLoading, error }) {
 	return (
 		<div className="col-lg-5 h-100 dark d-flex flex-column">
 			<div className="semicircle medium">

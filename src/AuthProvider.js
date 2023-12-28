@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { useNavigate } from "react-router-dom"
 
@@ -9,28 +9,15 @@ const AuthProvider = ({ children }) => {
 	const navigate = useNavigate()
 
 	const login = (data) => {
-		console.log(data)
-		setUser(data.user)
-		localStorage.setItem("user", JSON.stringify(data.user))
-		if(data.hasResponded) navigate("/responses")
+		setUser(data)
+		if (data.hasResponded) navigate("/responses")
 		else navigate("/reveal")
 	}
 
 	const logout = () => {
 		setUser(null)
-		localStorage.removeItem("user")
 		navigate("/")
 	}
-
-	useEffect(() => {
-		if(user) return
-		const storedUser = JSON.parse(localStorage.getItem("user"))
-		if (storedUser) {
-			setUser(storedUser)
-			localStorage.setItem("user", JSON.stringify(storedUser))
-		}
-		else navigate("/")
-	}, [user, navigate])
 
 	return (
 		<AuthContext.Provider value={{ user, login, logout }}>
