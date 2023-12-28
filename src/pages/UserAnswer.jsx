@@ -16,7 +16,7 @@ export default function UserAnswer() {
 								</label>
 								<textarea className="form-control custom-textarea" id="userResponseTextarea" rows="12"></textarea>
 							</div>
-							<button type="submit" className="submit-button btn align-self-end text-primary mt-1">
+							<button type="submit" className="custom-btn align-self-end text-primary mt-1">
 								Submit
 							</button>
 						</form>

@@ -39,7 +39,7 @@ export default function PromptReveal() {
 							sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily
 							prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt
 						</h2>
-						<Link className="" to="/my-answer">
+						<Link className="custom-btn" to="/my-answer">
 							Write your response
 						</Link>
 					</div>
