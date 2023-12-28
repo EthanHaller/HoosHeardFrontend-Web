@@ -72,8 +72,16 @@
 
 .middle-row {
 	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding-top: 2em;
 }
 
 .bottom-row {
 	height: 20%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
 }
