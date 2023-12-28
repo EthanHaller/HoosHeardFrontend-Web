@@ -15,7 +15,7 @@ export default function LandingPage() {
 				"Content-Type": "application/json",
 			})
 			.then((res) => {
-				login(res.data.user)
+				login(res.data)
 			})
 	}
 

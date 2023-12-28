@@ -8,10 +8,12 @@ const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null)
 	const navigate = useNavigate()
 
-	const login = (userData) => {
-		setUser(userData)
-		localStorage.setItem("user", JSON.stringify(userData))
-		navigate("/home")
+	const login = (data) => {
+		console.log(data)
+		setUser(data.user)
+		localStorage.setItem("user", JSON.stringify(data.user))
+		if(data.hasResponded) navigate("/responses")
+		else navigate("/reveal")
 	}
 
 	const logout = () => {

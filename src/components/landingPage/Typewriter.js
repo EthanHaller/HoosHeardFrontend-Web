@@ -7,7 +7,7 @@ const BlinkingCursor = () => {
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			setIsVisible((prevVisible) => !prevVisible)
-		}, 500)
+		}, 600)
 
 		return () => {
 			clearInterval(intervalId)
