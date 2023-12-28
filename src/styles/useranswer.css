@@ -14,9 +14,23 @@
 }
 
 .textarea-label {
-    font-size: 1.8em;
+    font-size: 1.5em;
 }
 
 .submit-button {
     font-size: 1.25em;
+}
+
+.modal-title {
+	border: none;
+	font-size: 1.5rem;
+}
+
+.modal-body {
+	border: none;
+	font-size: 1.25rem;
+}
+
+.modal-footer {
+	border: none;
 }

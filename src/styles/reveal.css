@@ -54,39 +54,3 @@
 		transform: translateY(0px);
 	}
 }
-
-/* https://getcssscan.com/css-buttons-examples */
-.custom-btn {
-  background-color: #FBE0C3;
-  border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.custom-btn:hover {
-  background-color: #FFBB98;
-}
-
-.custom-btn:active {
-  box-shadow: #422800 2px 2px 0 0;
-  transform: translate(2px, 2px);
-}
-
-@media (min-width: 768px) {
-  .custom-btn {
-    min-width: 120px;
-    padding: 0 25px;
-  }
-}
