@@ -44,10 +44,10 @@ const Typewriter = ({ text, delay, showCursor }) => {
 
 	return (
 		<>
-			<p className="landing-description">
+			<span>
 				{currentText}
 				{showCursor && complete && <BlinkingCursor />}
-			</p>
+			</span>
 		</>
 	)
 }

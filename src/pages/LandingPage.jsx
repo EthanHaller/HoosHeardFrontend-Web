@@ -30,15 +30,17 @@ export default function LandingPage() {
 							</div>
 						</div>
 						<div className="middle-row">
-							<Typewriter
-								text="Welcome to HoosHeard, where your voice takes center stage! Every day, you'll encounter a unique prompt that challenges your
+							<p className="landing-description">
+								<Typewriter
+									text="Welcome to HoosHeard, where your voice takes center stage! Every day, you'll encounter a unique prompt that challenges your
 								creativity, sparks your thoughts, and encourages self-expression. Answer the question to unlock a world of diverse responses,
 								engage with others through likes and comments, and witness the power of individual expression. But here's the twist - once the
 								day is over, yesterday's conversations vanish. Join HoosHeard for a daily dose of connection, creativity, and fleeting moments
 								of shared insights. Your voice matters here."
-								delay={5}
-								showCursor={true}
-							/>
+									delay={5}
+									showCursor={true}
+								/>
+							</p>
 						</div>
 						<div className="bottom-row">
 							<div className="google-login-btn">
