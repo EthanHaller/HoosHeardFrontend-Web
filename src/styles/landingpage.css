@@ -1,0 +1,25 @@
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--lightest);
+}
+
+.landing-content {
+    text-align: justify;
+    max-width: 600px;
+}
+
+.landing-description {
+    font-size: 1.3rem;
+    line-height: 2.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    max-width: 45ch;
+}
+
+.google-login-btn {
+    display: flex;
+    justify-content: center;
+}
