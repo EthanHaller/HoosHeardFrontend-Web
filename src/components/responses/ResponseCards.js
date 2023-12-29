@@ -20,17 +20,39 @@ export default function ResponseCards() {
 		})
 		.then(res => setLikeData(res.data))
 		.catch(err => console.error(err))
-	},[])
+	},[user.user.email])
 
-	console.log(likeData)
-
-	const [liked, setLiked] = useState(new Set([1, 2]))
+	const [liked, setLiked] = useState(new Set(likeData.likes))
 
 	const handleLikeUnlike = (responseId) => {
 		const nextSet = new Set(liked)
 		if (liked.has(responseId)) {
-			nextSet.delete(responseId)
-		} else nextSet.add(responseId)
+			// unlike
+			axios.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
+				email: user.user.email,
+				responseId: responseId
+			})
+			.then(res => {
+				console.log(res)
+				nextSet.delete(responseId)
+			})
+			.catch(err => {
+				console.error(err)
+			})
+		} else {
+			// like
+			axios.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
+				email: user.user.email,
+				responseId: responseId
+			})
+			.then(res => {
+				console.log(res)
+				nextSet.add(responseId)
+			})
+			.catch(err => {
+				console.error(err)
+			})
+		}
 		setLiked(nextSet)
 	}
 
@@ -54,7 +76,7 @@ export default function ResponseCards() {
 		const timeAgo = calculateTimeAgo(response.createdAt)
 		const numLikes = nFormatter(response.likes, 1)
 		const numComments = nFormatter(response.comments, 1)
-		const isLiked = liked.has(response.id)
+		const isLiked = liked.has(response._id)
 
 		return (
 			<div key={response._id} className="card mb-3">
@@ -70,7 +92,7 @@ export default function ResponseCards() {
 							<div className="col-10"></div>
 							<div className="col-1 p-0">
 								<div className="d-flex flex-column">
-									<button className="btn p-0" onClick={() => handleLikeUnlike(response.id)}>
+									<button className="btn p-0" onClick={() => handleLikeUnlike(response._id)}>
 										<FontAwesomeIcon icon={isLiked ? faHeart : faUnliked} className="text-primary" />
 										<p className="m-0 text-primary text-center">{numLikes}</p>
 									</button>
