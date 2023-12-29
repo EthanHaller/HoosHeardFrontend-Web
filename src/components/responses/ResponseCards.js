@@ -1,20 +1,36 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import useFetch from "../../hooks/useFetch"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircle, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/free-regular-svg-icons"
 
 import "../../styles/responses.css"
+import { useAuth } from "../../AuthProvider"
+import axios from "axios"
 
 export default function ResponseCards() {
-	const [responses, setResponses] = useState(testResponses)
-	const [liked, setLiked] = useState(testUserLikes)
+	const { user } = useAuth()
 	const [sortOption, setSortOption] = useState("hot")
+	const { data: responseData, isLoading: isResponseLoading, error: responseError } = useFetch("/responses/")
 
-	const handleLikeUnlike = (postId) => {
+	const [likeData, setLikeData] = useState([])
+	useEffect(() => {
+		axios.get(`${process.env.REACT_APP_BACKEND_URL}/likes/`, {
+			params: { email: user.user.email }
+		})
+		.then(res => setLikeData(res.data))
+		.catch(err => console.error(err))
+	},[])
+
+	console.log(likeData)
+
+	const [liked, setLiked] = useState(new Set([1, 2]))
+
+	const handleLikeUnlike = (responseId) => {
 		const nextSet = new Set(liked)
-		if (liked.has(postId)) {
-			nextSet.delete(postId)
-		} else nextSet.add(postId)
+		if (liked.has(responseId)) {
+			nextSet.delete(responseId)
+		} else nextSet.add(responseId)
 		setLiked(nextSet)
 	}
 
@@ -22,7 +38,11 @@ export default function ResponseCards() {
 		setSortOption(option)
 	}
 
-	const responsesSorted = [...responses].sort((a, b) => {
+	if (isResponseLoading || !responseData) {
+		return <p>Loading responses...</p>
+	}
+
+	const responsesSorted = [...responseData.responses].sort((a, b) => {
 		if (sortOption === "recent") {
 			return new Date(b.timestamp) - new Date(a.timestamp)
 		} else {
@@ -31,13 +51,13 @@ export default function ResponseCards() {
 	})
 
 	const responseCards = responsesSorted.map((response) => {
-		const timeAgo = calculateTimeAgo(response.timestamp)
+		const timeAgo = calculateTimeAgo(response.createdAt)
 		const numLikes = nFormatter(response.likes, 1)
 		const numComments = nFormatter(response.comments, 1)
 		const isLiked = liked.has(response.id)
 
 		return (
-			<div key={response.id} className="card mb-3">
+			<div key={response._id} className="card mb-3">
 				<div className="card-body">
 					<div className="d-inline-flex align-items-center mb-3">
 						<h5 className="m-0 text-primary">Anonymous</h5>
@@ -108,7 +128,7 @@ function calculateTimeAgo(timestamp) {
 	}
 }
 
-//https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900
+// https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900
 function nFormatter(num, digits) {
 	const lookup = [
 		{ value: 1, symbol: "" },
@@ -128,29 +148,3 @@ function nFormatter(num, digits) {
 		})
 	return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0"
 }
-
-const testResponses = [
-	{
-		id: 1,
-		timestamp: "2023-12-22T17:54:34.454Z",
-		likes: 123,
-		comments: 124100,
-		text: "this is a sample response",
-	},
-	{
-		id: 2,
-		timestamp: "2023-12-22T16:54:34.454Z",
-		likes: 512,
-		comments: 124,
-		text: "this is another sample response",
-	},
-	{
-		id: 3,
-		timestamp: "2023-12-22T15:54:34.454Z",
-		likes: 548923,
-		comments: 124,
-		text: "woah look at this response",
-	},
-]
-
-const testUserLikes = new Set([2, 3])

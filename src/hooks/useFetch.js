@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-const useFetch = (endpoint, body) => {
+const useFetch = (endpoint) => {
 	const [data, setData] = useState([])
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
@@ -11,7 +11,7 @@ const useFetch = (endpoint, body) => {
 			setIsLoading(true)
 
 			try {
-				const response = await axios.get(process.env.REACT_APP_BACKEND_URL + endpoint, body)
+				const response = await axios.get(process.env.REACT_APP_BACKEND_URL + endpoint)
 				setData(response.data)
 				setIsLoading(false)
 			} catch (error) {
@@ -22,7 +22,7 @@ const useFetch = (endpoint, body) => {
 			}
 		}
 		fetchData()
-	}, [body, endpoint])
+	}, [endpoint])
 
 	return { data, isLoading, error }
 }
