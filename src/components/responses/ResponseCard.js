@@ -6,45 +6,48 @@ import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/f
 import "../../styles/responses.css"
 import { useAuth } from "../../AuthProvider"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 export default function ResponseCard({ response }) {
-    const { user } = useAuth()
-    const [isLiked, setisLiked] = useState(false)
-    const [numLikes, setNumLikes] = useState(false)
+	const { user } = useAuth()
+	const [isLiked, setisLiked] = useState(false)
+	const [numLikes, setNumLikes] = useState(false)
 
-    const handleLikeUnlike = (responseId) => {
+	const handleLikeUnlike = (responseId) => {
 		if (isLiked) {
 			// unlike
-			axios.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
-				email: user.user.email,
-				responseId: responseId
-			})
-			.then(res => {
-				setisLiked(false)
-                setNumLikes(numLikes-1)
-			})
-			.catch(err => {
-				console.error(err)
-			})
+			axios
+				.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
+					email: user.user.email,
+					responseId: responseId,
+				})
+				.then((res) => {
+					setisLiked(false)
+					setNumLikes(numLikes - 1)
+				})
+				.catch((err) => {
+					console.error(err)
+				})
 		} else {
 			// like
-			axios.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
-				email: user.user.email,
-				responseId: responseId
-			})
-			.then(res => {
-				setisLiked(true)
-                setNumLikes(numLikes+1)
-			})
-			.catch(err => {
-				console.error(err)
-			})
+			axios
+				.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
+					email: user.user.email,
+					responseId: responseId,
+				})
+				.then((res) => {
+					setisLiked(true)
+					setNumLikes(numLikes + 1)
+				})
+				.catch((err) => {
+					console.error(err)
+				})
 		}
 	}
 
-    const timeAgo = calculateTimeAgo(response.createdAt)
-    const nLikes = nFormatter(numLikes)
-    const nComments = nFormatter(response.numComments, 1)
+	const timeAgo = calculateTimeAgo(response.createdAt)
+	const nLikes = nFormatter(numLikes)
+	const nComments = nFormatter(response.numComments, 1)
 
 	return (
 		<div key={response._id} className="card mb-3">
@@ -69,7 +72,9 @@ export default function ResponseCard({ response }) {
 						<div className="col-1 p-0">
 							<div className="d-flex flex-column">
 								<button className="btn p-0">
-									<FontAwesomeIcon icon={faUncommented} className="text-primary" />
+									<Link to={`/responses/${response._id}`}>
+										<FontAwesomeIcon icon={faUncommented} className="text-primary" />
+									</Link>
 									<p className="m-0 text-primary text-center">{nComments}</p>
 								</button>
 							</div>

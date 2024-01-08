@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import PromptSidebar from "../components/PromptSidebar"
 import useFetch from "../hooks/useFetch"
+import ResponseCard from "../components/responses/ResponseCard"
 
 import "../styles/responses.css"
-import ResponseCard from "../components/responses/ResponseCard"
 
 export default function Responses() {
 	const { data, isLoading, error } = useFetch("/prompts/latest")
