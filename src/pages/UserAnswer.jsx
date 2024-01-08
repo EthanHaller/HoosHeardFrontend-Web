@@ -20,10 +20,6 @@ export default function UserAnswer() {
 
 	const handleConfirmSubmit = (event) => {
 		event.preventDefault()
-		
-		console.log(text)
-		console.info(data.prompt)
-		console.info(user)
 
 		axios
 			.post(`${"http://localhost:8080"}/responses/create`, {
@@ -50,7 +46,7 @@ export default function UserAnswer() {
 									Your Answer
 								</label>
 								<textarea
-									className="form-control custom-textarea"
+									className="custom-textarea"
 									id="userResponseTextarea"
 									rows="12"
 									onChange={handleTextareaChange}

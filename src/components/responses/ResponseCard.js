@@ -57,7 +57,7 @@ export default function ResponseCard({ response }) {
 					<FontAwesomeIcon icon={faCircle} className="circle-icon" />
 					<h6 className="m-0 text-secondary"> {timeAgo}</h6>
 				</div>
-				<p className="card-text">{response.text}</p>
+				<p className="card-text text-primary">{response.text}</p>
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col-10"></div>

@@ -14,6 +14,17 @@ export default function Comments() {
 
 	const { data, isLoading, error } = useFetch("/prompts/latest")
 	const { data: responseData, isLoading: responseLoading, error: responseError } = useFetch(`/responses/${id}`)
+	const { data: commentsData, isLoading: commentsLoading, error: commentsError } = useFetch(`/comments/${id}`)
+
+    const [text, setText] = useState("")
+
+    const handleTextareaChange = (event) => {
+		setText(event.target.value)
+	}
+
+	const handleConfirmSubmit = (event) => {
+		event.preventDefault()
+	}
 
 	if (isLoading || !responseData || responseData.length === 0) {
 		return (
@@ -35,6 +46,22 @@ export default function Comments() {
 							<FontAwesomeIcon icon={faChevronLeft} className="back-btn my-3" />
 						</Link>
 						<ResponseCard response={responseData.response} />
+						<form className="d-flex flex-column">
+							<div className="form-group">
+								<label htmlFor="userResponseTextarea" className="text-primary comment-textarea-label">
+									Write a comment...
+								</label>
+								<textarea
+									className="comment-textarea"
+									id="userResponseTextarea"
+									rows="2"
+									onChange={handleTextareaChange}
+								></textarea>
+							</div>
+							<button type="submit" className="custom-btn align-self-end mt-1" onClick={handleConfirmSubmit}>
+								Submit
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>
