@@ -5,7 +5,7 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons"
 import "../../styles/responses.css"
 import { useAuth } from "../../AuthProvider"
 
-export default function ResponseCard({ comment }) {
+export default function CommentCard({ comment }) {
 	const { user } = useAuth()
 
 	const timeAgo = calculateTimeAgo(comment.createdAt)

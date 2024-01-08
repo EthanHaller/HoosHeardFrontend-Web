@@ -35,7 +35,7 @@ export default function Responses() {
 			<div className="container-fluid">
 				<div className="row view-height">
 					<PromptSidebar displayText={"ANONYMOUS RESPONSES TO..."} data={data} isLoading={isLoading} error={error} />
-					<div className="col-lg-7 h-100 lightest">
+					<div className="col-lg-7 lightest">
 						<span className="d-flex align-items-center mt-2 mb-3">
 							<button className={`btn ${sortOption === "hot" ? "active" : ""}`} onClick={() => handleSort("hot")}>
 								Hot
