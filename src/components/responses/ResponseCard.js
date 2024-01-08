@@ -71,7 +71,7 @@ export default function ResponseCard({ response }) {
 						</div>
 						<div className="col-1 p-0">
 							<div className="d-flex flex-column">
-								<Link to={`/responses/${response._id}`}>
+								<Link to={`/responses/${response._id}`} className="d-flex justify-content-center">
 									<button className="btn p-0">
 										<FontAwesomeIcon icon={faUncommented} className="text-primary" />
 									</button>
