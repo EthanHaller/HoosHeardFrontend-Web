@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircle } from "@fortawesome/free-solid-svg-icons"
 
 import "../../styles/responses.css"
-import { useAuth } from "../../AuthProvider"
+import { useAuth } from "../../auth/AuthProvider"
 
 export default function CommentCard({ comment }) {
 	const { user } = useAuth()

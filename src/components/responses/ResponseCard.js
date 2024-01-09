@@ -4,7 +4,7 @@ import { faCircle, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/free-regular-svg-icons"
 
 import "../../styles/responses.css"
-import { useAuth } from "../../AuthProvider"
+import { useAuth } from "../../auth/AuthProvider"
 import axios from "axios"
 import { Link } from "react-router-dom"
 

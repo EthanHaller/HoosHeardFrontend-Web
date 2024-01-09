@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { AuthProvider } from "./AuthProvider"
+import { AuthProvider } from "./auth/AuthProvider"
 
 import LandingPage from "./pages/LandingPage"
 import Home from "./pages/Home"

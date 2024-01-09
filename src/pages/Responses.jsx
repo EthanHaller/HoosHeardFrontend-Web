@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../styles/responses.css"
 import { Link } from "react-router-dom"
 import { faArrowRightFromBracket, faUserPen } from "@fortawesome/free-solid-svg-icons"
-import { useAuth } from "../AuthProvider"
+import { useAuth } from "../auth/AuthProvider"
 
 export default function Responses() {
 	const { user, logout } = useAuth()
