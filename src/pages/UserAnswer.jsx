@@ -5,10 +5,16 @@ import axios from "axios"
 import { useAuth } from "../AuthProvider"
 import { useNavigate } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
+import Comments from "./Comments"
 
 export default function UserAnswer() {
 	const { user } = useAuth()
 	const navigate = useNavigate()
+
+	if(user.hasResponded) {
+		navigate(`/responses/${user.responseId}`)
+	}
+
 	const { data, isLoading, error } = useFetch("/prompts/latest")
 
 	const [showModal, setShowModal] = useState(false)

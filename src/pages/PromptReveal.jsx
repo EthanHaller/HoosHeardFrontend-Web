@@ -3,9 +3,11 @@ import logoImage from "../images/HoosHeardLogoDark.png"
 import "../styles/reveal.css"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import { faChevronDown, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { useAuth } from "../AuthProvider"
 
 export default function PromptReveal() {
+	const { user, logout } = useAuth()
 	const promptContainerRef = useRef(null)
 
 	const handleScroll = () => {
@@ -18,6 +20,11 @@ export default function PromptReveal() {
 		<>
 			<div>
 				<div className="container-fluid view-height dark d-flex flex-column shapedividers_com-3810">
+					<div className="d-flex justify-content-end align-items-center medium logout-bar">
+						<button className="logout-btn mt-3 mx-3" onClick={() => logout()} aria-labelledby="logout">
+							<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+						</button>
+					</div>
 					<div className="semicircle medium">
 						<div className="logo">
 							<img src={logoImage} alt="Logo" />

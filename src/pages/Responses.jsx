@@ -51,11 +51,11 @@ export default function Responses() {
 								Recent
 							</button>
 							<span className="flex-grow-1"></span>
-							<Link to={"/my-answer"} aria-labelledby="My Answer" className="mx-2">
-								<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn"/>
+							<Link to={`/responses/${user.responseId}`} aria-labelledby="My Answer" className="mx-2">
+								<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn" />
 							</Link>
-							<button className="logout-btn mx-2" onClick={() => logout()}>
-								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn"/>
+							<button className="logout-btn mx-2" onClick={() => logout()} aria-labelledby="logout">
+								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
 							</button>
 						</span>
 						{responseCards}

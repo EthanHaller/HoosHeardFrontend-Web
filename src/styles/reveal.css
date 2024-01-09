@@ -2,6 +2,14 @@
 	height: 100vh;
 }
 
+.logout-bar {
+	top: 0;
+	left: 0;
+	width: calc(100% + var(--bs-gutter-x));
+	margin-left: calc(var(--bs-gutter-x) * -0.5);
+	margin-right: calc(var(--bs-gutter-x) * -0.5);
+}
+
 .reveal-text {
 	font-size: 5em;
 }
@@ -37,7 +45,7 @@
 }
 
 .bounce-animation {
-    cursor: pointer;
+	cursor: pointer;
 	animation: doubleBounce 4s infinite ease-in-out;
 }
 

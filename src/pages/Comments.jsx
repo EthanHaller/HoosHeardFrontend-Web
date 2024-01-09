@@ -6,15 +6,20 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import ResponseCard from "../components/responses/ResponseCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../styles/comments.css"
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
+import { faChevronLeft, faUserPen, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../AuthProvider"
 import axios from "axios"
 
 export default function Comments() {
-	const { user } = useAuth()
+	const { user, logout } = useAuth()
 	const navigate = useNavigate()
 	const params = useParams()
 	const id = params.id
+
+	let sidebarText = "ANONYMOUS RESPONSE TO..."
+	if (user.hasResponded && user.responseId === id) {
+		sidebarText = "MY RESPONSE TO..."
+	}
 
 	const { data, isLoading, error } = useFetch("/prompts/latest")
 	const { data: responseData, isLoading: responseLoading, error: responseError } = useFetch(`/responses/${id}`)
@@ -49,9 +54,6 @@ export default function Comments() {
 		)
 	}
 
-	console.info(responseData)
-	console.info(commentsData)
-
 	const comments = commentsData.comments.map((comment) => {
 		return <CommentCard comment={comment} />
 	})
@@ -60,11 +62,20 @@ export default function Comments() {
 		<>
 			<div className="container-fluid">
 				<div className="row view-height">
-					<PromptSidebar displayText={"ANONYMOUS RESPONSES TO..."} data={data} isLoading={isLoading} error={error} />
+					<PromptSidebar displayText={sidebarText} data={data} isLoading={isLoading} error={error} />
 					<div className="col-lg-7 lightest">
-						<Link to={"/responses"} className="p-3">
-							<FontAwesomeIcon icon={faChevronLeft} className="back-btn my-3" />
-						</Link>
+						<span className="d-flex align-items-center">
+							<Link to={"/responses"} className="p-3">
+								<FontAwesomeIcon icon={faChevronLeft} className="fontawesome-btn" />
+							</Link>
+							<span className="flex-grow-1"></span>
+							<Link to={`/responses/${user.responseId}`} aria-labelledby="My Answer" className="mx-2">
+								<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn" />
+							</Link>
+							<button className="logout-btn mx-2" onClick={() => logout()} aria-labelledby="logout">
+								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+							</button>
+						</span>
 						<ResponseCard response={responseData.response} />
 						<form className="d-flex flex-column">
 							<div className="form-group">
