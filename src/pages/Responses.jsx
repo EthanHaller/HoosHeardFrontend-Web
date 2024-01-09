@@ -22,7 +22,7 @@ export default function Responses() {
 	}
 
 	const { data, isLoading, error } = useFetch("/prompts/latest")
-	const { data: responseData, isLoading: isResponseLoading, error: responseError } = useFetch("/responses/")
+	const { data: responseData, isLoading: isResponseLoading, error: responseError } = useFetch(`/responses/${user ? user.user._id : ""}`)
 	const [sortOption, setSortOption] = useState("hot")
 
 	const handleSort = (option) => {

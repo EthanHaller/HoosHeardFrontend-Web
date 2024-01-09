@@ -26,7 +26,7 @@ export default function Comments() {
 	}
 
 	const { data, isLoading, error } = useFetch("/prompts/latest")
-	const { data: responseData, isLoading: responseLoading, error: responseError } = useFetch(`/responses/${id}`)
+	const { data: responseData, isLoading: responseLoading, error: responseError } = useFetch(`/responses/one/${user ? user.user._id : ""}/${id}`)
 	const { data: commentsData, isLoading: commentsLoading, error: commentsError } = useFetch(`/comments/${id}`)
 
 	const [text, setText] = useState("")
@@ -56,8 +56,10 @@ export default function Comments() {
 	} else comments = commentsData
 
 	comments = comments.comments.map((comment) => {
-		return <CommentCard comment={comment} />
+		return <CommentCard comment={comment} key={comment._id} />
 	})
+
+	console.info(responseData)
 
 	return (
 		<>
@@ -77,7 +79,7 @@ export default function Comments() {
 								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
 							</button>
 						</span>
-						<ResponseCard response={responseData ? responseData.response : null} />
+						{responseLoading ? <p>Loading...</p> : <ResponseCard response={responseData?.response} />}
 						<form className="d-flex flex-column">
 							<div className="form-group">
 								<label htmlFor="userResponseTextarea" className="text-primary comment-textarea-label">

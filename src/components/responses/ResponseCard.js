@@ -10,10 +10,10 @@ import { Link } from "react-router-dom"
 
 export default function ResponseCard({ response }) {
 	const { user } = useAuth()
-	const [isLiked, setisLiked] = useState(false)
-	const [numLikes, setNumLikes] = useState(false)
+	const [isLiked, setisLiked] = useState(response?.likedByUser)
+	const [numLikes, setNumLikes] = useState(response?.numLikes)
 
-	if (response === null) {
+	if (!response) {
 		return (
 			<>
 				<p>Loading...</p>
@@ -39,7 +39,7 @@ export default function ResponseCard({ response }) {
 		} else {
 			// like
 			axios
-				.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
+				.post(`${process.env.REACT_APP_BACKEND_URL}/likes/like`, {
 					email: user.user.email,
 					responseId: responseId,
 				})
