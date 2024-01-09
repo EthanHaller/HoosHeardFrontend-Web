@@ -7,7 +7,7 @@ import ResponseCard from "../components/responses/ResponseCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "../styles/comments.css"
 import { faChevronLeft, faUserPen, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
-import { useAuth } from "../auth/AuthProvider"
+import { useAuth } from "../hooks/useAuth"
 import axios from "axios"
 
 export default function Comments() {

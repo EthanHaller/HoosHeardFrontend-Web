@@ -1,20 +1,26 @@
 import React from "react"
 import axios from "axios"
 import { GoogleLogin } from "@react-oauth/google"
-import { useAuth } from "../AuthProvider"
+import { useAuth } from "../hooks/useAuth"
 import logoImage from "../images/HoosHeardLogoDark.png"
 import "../styles/landingpage.css"
 import Typewriter from "../components/landingPage/Typewriter"
+import { useNavigate } from "react-router-dom"
 
 export default function LandingPage() {
-	const { login } = useAuth()
+	const { user, login } = useAuth()
+	const navigate = useNavigate()
 
 	const handleGoogleLogin = (credentialResponse) => {
 		axios
 			.post(`${process.env.REACT_APP_BACKEND_URL}/auth/google/login`, credentialResponse, {
 				"Content-Type": "application/json",
 			})
-			.then((res) => login(res.data))
+			.then((res) => {
+				login(res.data)
+				if(user.hasResponded) navigate("/responses")
+				else navigate("/reveal")
+			})
 	}
 
 	return (
