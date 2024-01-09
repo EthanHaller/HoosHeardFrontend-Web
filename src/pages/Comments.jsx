@@ -13,11 +13,15 @@ import axios from "axios"
 export default function Comments() {
 	const { user, logout } = useAuth()
 	const navigate = useNavigate()
+
+	if (!user) navigate("/")
+	else if (user && !user.hasResponded) navigate("/reveal")
+
 	const params = useParams()
 	const id = params.id
 
 	let sidebarText = "ANONYMOUS RESPONSE TO..."
-	if (user.hasResponded && user.responseId === id) {
+	if (user && user.hasResponded && user.responseId === id) {
 		sidebarText = "MY RESPONSE TO..."
 	}
 
@@ -46,15 +50,12 @@ export default function Comments() {
 		navigate(0)
 	}
 
+	let comments
 	if (isLoading || !responseData || !commentsData) {
-		return (
-			<>
-				<p>Loading...</p>
-			</>
-		)
-	}
+		comments = { comments: [] }
+	} else comments = commentsData
 
-	const comments = commentsData.comments.map((comment) => {
+	comments = comments.comments.map((comment) => {
 		return <CommentCard comment={comment} />
 	})
 
@@ -69,14 +70,14 @@ export default function Comments() {
 								<FontAwesomeIcon icon={faChevronLeft} className="fontawesome-btn" />
 							</Link>
 							<span className="flex-grow-1"></span>
-							<Link to={`/responses/${user.responseId}`} aria-labelledby="My Answer" className="mx-2">
+							<Link to={`/responses/${user ? user.responseId : ""}`} aria-labelledby="My Answer" className="mx-2">
 								<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn" />
 							</Link>
 							<button className="logout-btn mx-2" onClick={() => logout()} aria-labelledby="logout">
 								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
 							</button>
 						</span>
-						<ResponseCard response={responseData.response} />
+						<ResponseCard response={responseData ? responseData.response : null} />
 						<form className="d-flex flex-column">
 							<div className="form-group">
 								<label htmlFor="userResponseTextarea" className="text-primary comment-textarea-label">

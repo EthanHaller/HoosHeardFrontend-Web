@@ -18,7 +18,7 @@ export default function LandingPage() {
 			})
 			.then((res) => {
 				login(res.data)
-				if(user.hasResponded) navigate("/responses")
+				if (res.data.hasResponded) navigate("/responses")
 				else navigate("/reveal")
 			})
 	}

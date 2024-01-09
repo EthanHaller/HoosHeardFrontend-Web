@@ -3,7 +3,6 @@
 import { useEffect } from "react"
 import { useUser } from "./useUser"
 import { useLocalStorage } from "./useLocalStorage"
-import { useNavigate } from "react-router-dom"
 
 export const useAuth = () => {
 	const { user, addUser, removeUser } = useUser()

@@ -5,14 +5,18 @@ import axios from "axios"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
-import Comments from "./Comments"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 
 export default function UserAnswer() {
-	const { user } = useAuth()
+	const { user, logout } = useAuth()
 	const navigate = useNavigate()
 
-	if(user.hasResponded) {
-		navigate(`/responses/${user.responseId}`)
+	if (!user) navigate("/")
+	// else if (user && user.hasResponded) navigate(`/responses/${user.responseId}`)
+	const handleLogout = () => {
+		logout()
+		navigate("/")
 	}
 
 	const { data, isLoading, error } = useFetch("/prompts/latest")
@@ -45,18 +49,18 @@ export default function UserAnswer() {
 			<div className="container-fluid">
 				<div className="row view-height">
 					<PromptSidebar displayText={"MY RESPONSE TO..."} data={data} isLoading={isLoading} error={error} />
-					<div className="col-lg-7 h-100 lightest d-flex flex-column justify-content-center">
+					<div className="col-lg-7 h-100 lightest d-flex flex-column">
+						<span className="d-flex justify-content-end my-3 mx-2">
+							<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
+								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+							</button>
+						</span>
 						<form className="d-flex flex-column mx-3">
 							<div className="form-group">
 								<label htmlFor="userResponseTextarea" className="text-primary textarea-label">
 									Your Answer
 								</label>
-								<textarea
-									className="custom-textarea"
-									id="userResponseTextarea"
-									rows="12"
-									onChange={handleTextareaChange}
-								></textarea>
+								<textarea className="custom-textarea" id="userResponseTextarea" rows="12" onChange={handleTextareaChange}></textarea>
 							</div>
 							<button type="button" className="custom-btn align-self-end mt-1" onClick={() => setShowModal(true)}>
 								Submit

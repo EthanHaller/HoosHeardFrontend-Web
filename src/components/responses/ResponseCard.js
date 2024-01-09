@@ -13,6 +13,14 @@ export default function ResponseCard({ response }) {
 	const [isLiked, setisLiked] = useState(false)
 	const [numLikes, setNumLikes] = useState(false)
 
+	if (response === null) {
+		return (
+			<>
+				<p>Loading...</p>
+			</>
+		)
+	}
+
 	const handleLikeUnlike = (responseId) => {
 		if (isLiked) {
 			// unlike
