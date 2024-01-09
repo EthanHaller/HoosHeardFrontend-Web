@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronDown, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../hooks/useAuth"
+import useFetch from "../hooks/useFetch"
 
 export default function PromptReveal() {
 	const { user, logout } = useAuth()
@@ -12,8 +13,9 @@ export default function PromptReveal() {
 
 	if (!user) navigate("/")
 
-	const promptContainerRef = useRef(null)
+	const { data, isLoading, error } = useFetch("/prompts/latest")
 
+	const promptContainerRef = useRef(null)
 	const handleScroll = () => {
 		if (promptContainerRef.current) {
 			promptContainerRef.current.scrollIntoView({ behavior: "smooth" })
@@ -46,9 +48,7 @@ export default function PromptReveal() {
 				<div className="container-fluid view-height lightest d-flex flex-column" ref={promptContainerRef}>
 					<div className="d-flex flex-column justify-content-center align-items-center flex-grow-1">
 						<h2 className="text-primary text-center p-3" style={{ maxWidth: "75ch" }}>
-							This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a
-							sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily
-							prompt This is a sample daily prompt This is a sample daily prompt This is a sample daily prompt
+							{data && data.prompt.text}
 						</h2>
 						<Link className="custom-btn" to="/my-answer">
 							Write your response
