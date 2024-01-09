@@ -40,3 +40,35 @@
 	margin: 0 0.8em;
 	color: #5c7c8d;
 }
+
+.sort-btn {
+	border: none;
+	background-color: transparent;
+	border: solid transparent;
+	border-width: 0 0 3px 0;
+}
+
+.sort-btn.active {
+	border: solid var(--text-color);
+	border-width: 0 0 3px 0;
+}
+
+.sort-btn:hover {
+	border: solid var(--dark);
+	border-width: 0 0 3px 0;
+}
+
+.fontawesome-btn {
+	color: var(--text-color);
+	font-size: 1.25rem;
+}
+
+.fontawesome-btn:hover {
+	color: var(--dark);
+	font-size: 1.25rem;
+}
+
+.logout-btn {
+	border: none;
+	background-color: transparent;
+}
