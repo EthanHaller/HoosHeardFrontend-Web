@@ -86,7 +86,7 @@ export default function Comments() {
 								<label htmlFor="userResponseTextarea" className="text-primary comment-textarea-label">
 									Write a comment...
 								</label>
-								<textarea className="comment-textarea" id="userResponseTextarea" rows="2" onChange={handleTextareaChange}></textarea>
+								<textarea className="comment-textarea" id="userResponseTextarea" rows="2" maxLength="300" onChange={handleTextareaChange}></textarea>
 							</div>
 							<button type="submit" className="custom-btn align-self-end mt-1" onClick={handleConfirmSubmit}>
 								Submit

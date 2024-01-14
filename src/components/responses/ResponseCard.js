@@ -31,8 +31,7 @@ export default function ResponseCard({ response }) {
 					email: user.user.email,
 					responseId: responseId,
 				})
-				.then((res) => {
-				})
+				.then((res) => {})
 				.catch((err) => {
 					console.error(err)
 					setisLiked(true)
@@ -47,8 +46,7 @@ export default function ResponseCard({ response }) {
 					email: user.user.email,
 					responseId: responseId,
 				})
-				.then((res) => {
-				})
+				.then((res) => {})
 				.catch((err) => {
 					console.error(err)
 					setisLiked(false)
@@ -73,23 +71,17 @@ export default function ResponseCard({ response }) {
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col-10"></div>
-						<div className="col-1 p-0">
-							<div className="d-flex flex-column">
-								<button className="btn p-0" onClick={() => handleLikeUnlike(response._id)}>
-									<FontAwesomeIcon icon={isLiked ? faHeart : faUnliked} className="text-primary" />
-									<p className="m-0 text-primary text-center">{nLikes}</p>
-								</button>
-							</div>
+						<div className="col-1 p-0 h-100">
+							<button className="like-btn" onClick={() => handleLikeUnlike(response._id)}>
+								<FontAwesomeIcon icon={isLiked ? faHeart : faUnliked} className="like-icon" />
+								<p className="m-0 text-primary text-center">{nLikes}</p>
+							</button>
 						</div>
-						<div className="col-1 p-0">
-							<div className="d-flex flex-column">
-								<Link to={`/responses/${response._id}`} className="d-flex justify-content-center">
-									<button className="btn p-0">
-										<FontAwesomeIcon icon={faUncommented} className="text-primary" />
-									</button>
-								</Link>
+						<div className="col-1 p-0 h-100 d-flex">
+							<Link to={`/responses/${response._id}`} className="comment-btn">
+								<FontAwesomeIcon icon={faUncommented} className="comment-icon" />
 								<p className="m-0 text-primary text-center">{nComments}</p>
-							</div>
+							</Link>
 						</div>
 					</div>
 				</div>

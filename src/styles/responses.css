@@ -72,3 +72,31 @@
 	border: none;
 	background-color: transparent;
 }
+
+.like-btn,
+.comment-btn {
+	border: none;
+	border-radius: 100%;
+	text-decoration: none;
+	height: 100%;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: var(--text-color);
+	background-color: transparent;
+	padding: 0 10% 0 10%;
+	margin: 0;
+}
+
+.like-icon,
+.comment-icon {
+	color: var(--text-color);
+	margin: 0.1rem;
+}
+
+.like-btn:hover,
+.comment-btn:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
