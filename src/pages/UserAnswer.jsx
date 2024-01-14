@@ -72,7 +72,7 @@ export default function UserAnswer() {
 									<label htmlFor="userResponseTextarea" className="text-primary textarea-label">
 										Your Answer
 									</label>
-									<textarea className="custom-textarea" id="userResponseTextarea" rows="12" onChange={handleTextareaChange}></textarea>
+									<textarea className="custom-textarea" id="userResponseTextarea" rows="12" maxLength="300" onChange={handleTextareaChange}></textarea>
 								</div>
 								<button type="button" className="custom-btn align-self-end mt-1" onClick={() => setShowModal(true)}>
 									Submit
