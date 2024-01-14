@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import PromptSidebar from "../components/PromptSidebar"
 import CommentCard from "../components/comments/CommentCard"
 import useFetch from "../hooks/useFetch"
@@ -11,25 +11,27 @@ import { useAuth } from "../hooks/useAuth"
 import axios from "axios"
 
 export default function Comments() {
-	const { user, logout } = useAuth()
+	const { user, userLoading, logout } = useAuth()
 	const navigate = useNavigate()
-
-	if (!user) navigate("/")
-	else if (user && !user.hasResponded) navigate("/reveal")
-
 	const params = useParams()
 	const id = params.id
+	const [text, setText] = useState("")
+
+	useEffect(() => {
+		if (!userLoading) {
+			if (!user) navigate("/")
+			else if (!user.hasResponded) navigate("/reveal")
+		}
+	}, [userLoading, user, navigate])
+
+	const { data, isLoading, error } = useFetch("/prompts/latest", !userLoading)
+	const { data: responseData, isLoading: responseLoading, error: responseError } = useFetch(`/responses/one/${user ? user.user._id : ""}/${id}`, !userLoading)
+	const { data: commentsData, isLoading: commentsLoading, error: commentsError } = useFetch(`/comments/${id}`, !userLoading)
 
 	let sidebarText = "ANONYMOUS RESPONSE TO..."
 	if (user && user.hasResponded && user.responseId === id) {
 		sidebarText = "MY RESPONSE TO..."
 	}
-
-	const { data, isLoading, error } = useFetch("/prompts/latest")
-	const { data: responseData, isLoading: responseLoading, error: responseError } = useFetch(`/responses/one/${user ? user.user._id : ""}/${id}`)
-	const { data: commentsData, isLoading: commentsLoading, error: commentsError } = useFetch(`/comments/${id}`)
-
-	const [text, setText] = useState("")
 
 	const handleTextareaChange = (event) => {
 		setText(event.target.value)
@@ -44,10 +46,11 @@ export default function Comments() {
 				responseId: responseData.response._id,
 				text: text,
 			})
-			.then((res) => console.log(res))
+			.then((res) => {
+				console.log(res)
+				navigate(0)
+			})
 			.catch((err) => console.log(err))
-
-		navigate(0)
 	}
 
 	let comments
@@ -58,8 +61,6 @@ export default function Comments() {
 	comments = comments.comments.map((comment) => {
 		return <CommentCard comment={comment} key={comment._id} />
 	})
-
-	console.info(responseData)
 
 	return (
 		<>

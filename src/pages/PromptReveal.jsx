@@ -13,7 +13,7 @@ export default function PromptReveal() {
 
 	if (!user) navigate("/")
 
-	const { data, isLoading, error } = useFetch("/prompts/latest")
+	const { data } = useFetch("/prompts/latest")
 
 	const promptContainerRef = useRef(null)
 	const handleScroll = () => {

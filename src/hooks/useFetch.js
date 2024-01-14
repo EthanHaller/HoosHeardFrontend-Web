@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-const useFetch = (endpoint) => {
+const useFetch = (endpoint, shouldFetch = true) => {
 	const [data, setData] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
 		const fetchData = async () => {
+			if (!shouldFetch) {
+				setIsLoading(false)
+				return
+			}
+
 			setIsLoading(true)
 
 			try {
 				const response = await axios.get(process.env.REACT_APP_BACKEND_URL + endpoint)
 				setData(response.data)
-				setIsLoading(false)
 			} catch (error) {
 				setError(error)
 				console.log(error)
@@ -21,8 +25,9 @@ const useFetch = (endpoint) => {
 				setIsLoading(false)
 			}
 		}
+
 		fetchData()
-	}, [endpoint])
+	}, [endpoint, shouldFetch])
 
 	return { data, isLoading, error }
 }
