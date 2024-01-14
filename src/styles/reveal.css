@@ -14,9 +14,13 @@
 	font-size: 5em;
 }
 
-.prompt-text {
+.prompt-reveal-text {
 	font-size: 4rem;
 	max-width: 80%;
+}
+
+.prompt-text {
+	font-size: 1.5rem;
 }
 
 .shapedividers_com-3810 {
