@@ -35,6 +35,10 @@
     font-family: 'Bauhaus', sans-serif;
 }
 
+.pt-10 {
+  padding-top: 6rem !important;
+}
+
 /* https://getcssscan.com/css-buttons-examples */
 .custom-btn {
     background-color: #FBE0C3;

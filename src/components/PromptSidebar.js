@@ -8,15 +8,13 @@ export default function PromptSidebar({ displayText, data, isLoading, error }) {
 					<img src={logoImage} alt="Logo" />
 				</div>
 			</div>
-			<div className="d-flex flex-column justify-content-center align-items-center flex-grow-1">
-				<div className="flex-grow-1"></div>
+			<div className="d-flex flex-column align-items-center flex-grow-1 pt-10">
 				<h2 className="text-primary sidebar-text">{displayText}</h2>
 				<div className="medium prompt-container">
 					{isLoading && <h5 className="text-primary p-3 prompt-text">loading...</h5>}
 					{!isLoading && data && data.prompt && <h5 className="text-primary p-3 prompt-text">{data.prompt.text}</h5>}
 					{!isLoading && !data && <p>No prompt available</p>}
 				</div>
-				<div className="flex-grow-1"></div>
 			</div>
 		</div>
 	)
