@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 
 export default function UserAnswer() {
-	const { user, logout } = useAuth()
+	const { user, login, logout } = useAuth()
 	const navigate = useNavigate()
 
 	if (!user) navigate("/")
@@ -39,6 +39,11 @@ export default function UserAnswer() {
 			})
 			.then((res) => {
 				console.log(res)
+				const newUser = user
+				newUser["responseId"] = res.data.response._id
+				newUser["hasResponded"] = true
+				logout()
+				login(newUser)
 				setShowModal(false)
 				navigate("/responses")
 			})
