@@ -53,10 +53,10 @@ export default function PromptReveal() {
 				</div>
 				<div className="container-fluid view-height lightest d-flex flex-column" ref={promptContainerRef}>
 					<div className="d-flex flex-column justify-content-center align-items-center flex-grow-1">
-						<h2 className="text-primary text-center p-3" style={{ maxWidth: "75ch" }}>
+						<h2 className="text-primary text-center p-3 prompt-text">
 							{data && data.prompt.text}
 						</h2>
-						<Link className="custom-btn" to="/my-answer">
+						<Link className="custom-btn mt-5" to="/my-answer">
 							Write your response
 						</Link>
 					</div>
