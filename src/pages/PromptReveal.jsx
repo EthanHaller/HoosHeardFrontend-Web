@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import logoImage from "../images/HoosHeardLogoDark.png"
 import "../styles/reveal.css"
 import { Link, useNavigate } from "react-router-dom"
@@ -8,10 +8,16 @@ import { useAuth } from "../hooks/useAuth"
 import useFetch from "../hooks/useFetch"
 
 export default function PromptReveal() {
-	const { user, logout } = useAuth()
+	const { user, userLoading, logout } = useAuth()
 	const navigate = useNavigate()
 
 	if (!user) navigate("/")
+
+	useEffect(() => {
+		if (!userLoading) {
+			if (!user) navigate("/")
+		}
+	}, [userLoading, user, navigate])
 
 	const { data } = useFetch("/prompts/latest")
 

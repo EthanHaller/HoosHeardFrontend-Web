@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PromptSidebar from "../components/PromptSidebar"
 import "../styles/useranswer.css"
 import axios from "axios"
@@ -9,11 +9,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 
 export default function UserAnswer() {
-	const { user, login, logout } = useAuth()
+	const { user, userLoading, login, logout } = useAuth()
 	const navigate = useNavigate()
 
-	if (!user) navigate("/")
-	// else if (user && user.hasResponded) navigate(`/responses/${user.responseId}`)
+	useEffect(() => {
+		if (!userLoading) {
+			if (!user) navigate("/")
+			else if (user.hasResponded) navigate(`/responses/${user.responseId}`)
+		}
+	}, [userLoading, user, navigate])
+
 	const handleLogout = () => {
 		logout()
 		navigate("/")

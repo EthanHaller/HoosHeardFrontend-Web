@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PromptSidebar from "../components/PromptSidebar"
 import useFetch from "../hooks/useFetch"
 import ResponseCard from "../components/responses/ResponseCard"
@@ -10,11 +10,15 @@ import { faArrowRightFromBracket, faUserPen } from "@fortawesome/free-solid-svg-
 import { useAuth } from "../hooks/useAuth"
 
 export default function Responses() {
-	const { user, logout } = useAuth()
+	const { user, userLoading, logout } = useAuth()
 	const navigate = useNavigate()
 
-	if (!user) navigate("/")
-	else if (user && !user.hasResponded) navigate("/reveal")
+	useEffect(() => {
+		if (!userLoading) {
+			if (!user) navigate("/")
+			else if (!user.hasResponded) navigate("/reveal")
+		}
+	}, [userLoading, user, navigate])
 
 	const handleLogout = () => {
 		logout()
