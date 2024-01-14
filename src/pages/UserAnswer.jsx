@@ -37,11 +37,12 @@ export default function UserAnswer() {
 				promptId: data._id,
 				text: text,
 			})
-			.then((res) => console.log(res))
+			.then((res) => {
+				console.log(res)
+				setShowModal(false)
+				navigate("/responses")
+			})
 			.catch((err) => console.log(err))
-
-		setShowModal(false)
-		navigate("/responses")
 	}
 
 	return (

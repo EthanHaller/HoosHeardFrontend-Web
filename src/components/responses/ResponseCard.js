@@ -24,31 +24,35 @@ export default function ResponseCard({ response }) {
 	const handleLikeUnlike = (responseId) => {
 		if (isLiked) {
 			// unlike
+			setisLiked(false)
+			setNumLikes(numLikes - 1)
 			axios
 				.post(`${process.env.REACT_APP_BACKEND_URL}/likes/unlike`, {
 					email: user.user.email,
 					responseId: responseId,
 				})
 				.then((res) => {
-					setisLiked(false)
-					setNumLikes(numLikes - 1)
 				})
 				.catch((err) => {
 					console.error(err)
+					setisLiked(true)
+					setNumLikes(numLikes + 1)
 				})
 		} else {
 			// like
+			setisLiked(true)
+			setNumLikes(numLikes + 1)
 			axios
 				.post(`${process.env.REACT_APP_BACKEND_URL}/likes/like`, {
 					email: user.user.email,
 					responseId: responseId,
 				})
 				.then((res) => {
-					setisLiked(true)
-					setNumLikes(numLikes + 1)
 				})
 				.catch((err) => {
 					console.error(err)
+					setisLiked(false)
+					setNumLikes(numLikes - 1)
 				})
 		}
 	}
