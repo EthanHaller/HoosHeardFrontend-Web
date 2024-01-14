@@ -95,9 +95,9 @@ export default function UserAnswer() {
 													onClick={() => setShowModal(false)}
 												></button>
 											</div>
-											<div className="modal-body text-primary medium">Are you sure you are ready to submit your answer?</div>
-											<div className="modal-footer medium">
-												<button type="button" className="custom-btn" data-dismiss="modal" onClick={() => setShowModal(false)}>
+											<div className="modal-body text-primary lightest">Are you sure you are ready to submit your answer?</div>
+											<div className="modal-footer lightest">
+												<button type="button" className="custom-btn-secondary" data-dismiss="modal" onClick={() => setShowModal(false)}>
 													Cancel
 												</button>
 												<button type="submit" className="custom-btn" onClick={handleConfirmSubmit}>
