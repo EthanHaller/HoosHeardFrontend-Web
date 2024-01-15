@@ -26,8 +26,8 @@ export default function LandingPage() {
 	return (
 		<>
 			<div className="container-fluid">
-				<div className="row">
-					<div className="col-xl-8 d-flex flex-column justify-content-center align-items-center lightest view-height">
+				<div className="row view-height">
+					<div className="col-xl-8 lightest d-flex flex-column justify-content-center align-items-center">
 						<div className="top-row">
 							<div className="landing-logo">
 								<img src={logoImage} alt="Logo" />
@@ -36,18 +36,14 @@ export default function LandingPage() {
 						<div className="middle-row">
 							<p className="landing-description">
 								<Typewriter
-									text="Welcome to HoosHeard, where your voice takes center stage! Every day, you'll encounter a unique prompt that challenges your
-								creativity, sparks your thoughts, and encourages self-expression. Answer the question to unlock a world of diverse responses,
-								engage with others through likes and comments, and witness the power of individual expression. But here's the twist - once the
-								day is over, yesterday's conversations vanish. Join HoosHeard for a daily dose of connection, creativity, and fleeting moments
-								of shared insights. Your voice matters here. "
+									text="Welcome to HoosHeard, a unique social media platform designed for daily self-expression! Every day, users are presented with a thought-provoking question to answer. The catch? Users must submit their responses before gaining access to all other anonymous user responses. The conversations are transient, as each day brings a new question, making it an ever-evolving space for authentic and dynamic interactions. Join HoosHeard to embrace the joy of sharing, connecting, and exploring the myriad voices within our community. "
 									delay={5}
 									showCursor={true}
 								/>
 							</p>
 						</div>
 						<div className="bottom-row">
-							<div className="google-login-btn">
+							<div className="google-login-btn mt-4">
 								<GoogleLogin
 									theme="outline"
 									size="large"

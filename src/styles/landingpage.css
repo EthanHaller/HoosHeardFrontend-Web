@@ -3,13 +3,8 @@
 	font-size: 1.3rem;
 	line-height: 2.25rem;
 	color: var(--text-secondary);
-	margin-bottom: 20px;
+	margin-bottom: 1.5rem;
 	max-width: 45ch;
-}
-
-.google-login-btn {
-	display: flex;
-	justify-content: center;
 }
 
 .shapedividers_com-1228 {
@@ -64,14 +59,13 @@
 }
 
 .top-row {
-	height: 30%;
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
 }
 
 .middle-row {
-	height: 50%;
+	height: 25rem;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -79,7 +73,6 @@
 }
 
 .bottom-row {
-	height: 20%;
 	width: 100%;
 	display: flex;
 	justify-content: center;
