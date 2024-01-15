@@ -4,7 +4,7 @@
 	line-height: 2.25rem;
 	color: var(--text-secondary);
 	margin-bottom: 1.5rem;
-	max-width: 45ch;
+	max-width: 50ch;
 }
 
 .shapedividers_com-1228 {
@@ -65,7 +65,7 @@
 }
 
 .middle-row {
-	height: 25rem;
+	height: 22rem;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
