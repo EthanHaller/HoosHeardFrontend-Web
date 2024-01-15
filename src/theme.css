@@ -42,20 +42,21 @@
 /* https://getcssscan.com/css-buttons-examples */
 .custom-btn {
     background-color: var(--medium);
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--dark);
     border-radius: 30px;
     color: var(--text-color);
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
-    font-size: 18px;
-    padding: 0 18px;
+    font-size: 1.125rem;
+    padding: 0 2rem;
     line-height: 50px;
     text-align: center;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    font-family: 'Bauhaus', sans-serif;
   }
   
   .custom-btn:hover {
@@ -68,20 +69,21 @@
 
   .custom-btn-secondary {
     background-color: var(--lightest);
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--dark);
     border-radius: 30px;
     color: var(--text-color);
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
-    font-size: 18px;
-    padding: 0 18px;
+    font-size: 1.125rem;
+    padding: 0 2rem;
     line-height: 50px;
     text-align: center;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    font-family: 'Bauhaus', sans-serif;
   }
   
   .custom-btn-secondary:hover {

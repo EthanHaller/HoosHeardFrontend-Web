@@ -83,7 +83,7 @@ export default function UserAnswer() {
 									tabIndex="-1"
 									role="dialog"
 								>
-									<div className="modal-dialog modal-dialog-centered" role="document">
+									<div className="modal-dialog modal-dialog-centered modal-lg" role="document">
 										<div className="modal-content">
 											<div className="modal-header dark">
 												<h5 className="modal-title text-primary">Confirm Submission</h5>
