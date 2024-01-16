@@ -62,6 +62,12 @@ export default function Comments() {
 		return <CommentCard comment={comment} key={comment._id} />
 	})
 
+	if(comments.length === 0) {
+		comments = (
+			<h5 className="text-primary">Be the first to comment!</h5>
+		)
+	}
+
 	return (
 		<>
 			<div className="container-fluid">

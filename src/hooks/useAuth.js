@@ -32,7 +32,6 @@ export const useAuth = () => {
 	}, [])
 
 	const login = (user) => {
-		console.log("logging in")
 		addUser(user)
 	}
 
