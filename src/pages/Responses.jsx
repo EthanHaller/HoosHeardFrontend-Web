@@ -56,11 +56,11 @@ export default function Responses() {
 					<PromptSidebar displayText={"ANONYMOUS RESPONSES TO..."} data={data} isLoading={isLoading} error={error} />
 					<div className="col-lg-7 lightest">
 						<span className="d-flex align-items-center mx-2 my-3">
-							<button className={`sort-btn ${sortOption === "hot" ? "active" : ""} mx-2`} onClick={() => handleSort("hot")}>
+							<button className={`text-primary sort-btn ${sortOption === "hot" ? "active" : ""} mx-2`} onClick={() => handleSort("hot")}>
 								Hot
 							</button>
 							<p className="text-center p-0 m-0">|</p>
-							<button className={`sort-btn ${sortOption === "recent" ? "active" : ""} mx-2`} onClick={() => handleSort("recent")}>
+							<button className={`text-primary sort-btn ${sortOption === "recent" ? "active" : ""} mx-2`} onClick={() => handleSort("recent")}>
 								Recent
 							</button>
 							<span className="flex-grow-1"></span>
