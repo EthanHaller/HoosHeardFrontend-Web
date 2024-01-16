@@ -86,7 +86,6 @@
 }
 
 .middle-row {
-	height: calc(30rem - 14vw);
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;

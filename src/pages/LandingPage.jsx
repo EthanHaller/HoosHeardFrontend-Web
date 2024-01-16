@@ -4,7 +4,6 @@ import { GoogleLogin } from "@react-oauth/google"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import logoImage from "../images/HoosHeardLogoDark.png"
-import Typewriter from "../components/landingPage/Typewriter"
 import "../styles/landingpage.css"
 
 export default function LandingPage() {
@@ -36,11 +35,11 @@ export default function LandingPage() {
 						</div>
 						<div className="middle-row">
 							<p className="landing-description mx-4 mb-0">
-								<Typewriter
-									text="Welcome to HoosHeard, a unique social media platform designed for daily self-expression! Every day, users are presented with a thought-provoking question to answer. The catch? Users must submit their responses before gaining access to all other anonymous user responses. The conversations are transient, as each day brings a new question, making it an ever-evolving space for authentic and dynamic interactions. Join HoosHeard to embrace the joy of sharing, connecting, and exploring the myriad voices within our community. "
-									delay={5}
-									showCursor={true}
-								/>
+								Welcome to HoosHeard, a unique social media platform designed for daily self-expression! Every day, users are presented with a
+								thought-provoking question to answer. The catch? Users must submit their responses before gaining access to all other anonymous
+								user responses. The conversations are transient, as each day brings a new question, making it an ever-evolving space for
+								authentic and dynamic interactions. Join HoosHeard to embrace the joy of sharing, connecting, and exploring the myriad voices
+								within our community.
 							</p>
 						</div>
 						<div className="bottom-row">
