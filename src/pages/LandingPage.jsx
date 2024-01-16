@@ -20,6 +20,7 @@ export default function LandingPage() {
 				if (res.data.hasResponded) navigate("/responses")
 				else navigate("/reveal")
 			})
+			.catch(err => console.error(err))
 	}
 
 	return (

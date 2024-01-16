@@ -37,7 +37,7 @@ export default function UserAnswer() {
 		event.preventDefault()
 
 		axios
-			.post(`${"http://localhost:8080"}/responses/create`, {
+			.post(`${process.env.REACT_APP_BACKEND_URL}/responses/create`, {
 				email: user.user.email,
 				promptId: data._id,
 				text: text,

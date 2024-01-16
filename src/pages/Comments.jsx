@@ -41,7 +41,7 @@ export default function Comments() {
 		event.preventDefault()
 
 		axios
-			.post(`${"http://localhost:8080"}/comments/create`, {
+			.post(`${process.env.REACT_APP_BACKEND_URL}/comments/create`, {
 				email: user.user.email,
 				responseId: responseData.response._id,
 				text: text,
