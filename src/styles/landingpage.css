@@ -1,7 +1,7 @@
 .landing-description {
 	text-align: justify;
 	font-size: calc(1rem + 0.5vw);
-	line-height: 2.25rem;
+	line-height: calc(2rem + 0.5vw);
 	color: var(--text-secondary);
 	margin-bottom: 1.5rem;
 	max-width: 50ch;
