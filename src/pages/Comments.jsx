@@ -19,8 +19,11 @@ export default function Comments() {
 	const [text, setText] = useState("")
 
 	useEffect(() => {
-		if (!userLoading && (!user || !user.hasResponded)) {
+		if (!userLoading && !user) {
 			navigate("/")
+		}
+		else if (!userLoading && !user.hasResponded) {
+			navigate("/reveal")
 		}
 	}, [userLoading, user, navigate])
 

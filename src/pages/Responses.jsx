@@ -14,8 +14,11 @@ export default function Responses() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!userLoading && (!user || !user.hasResponded)) {
+		if (!userLoading && !user) {
 			navigate("/")
+		}
+		else if (!userLoading && !user.hasResponded) {
+			navigate("/reveal")
 		}
 	}, [userLoading, user, navigate])
 
