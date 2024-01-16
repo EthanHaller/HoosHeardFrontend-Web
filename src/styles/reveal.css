@@ -11,11 +11,12 @@
 }
 
 .reveal-text {
-	font-size: 5em;
+	font-size: calc(4rem + 2vw);
+	margin-top: 22vh;
 }
 
 .prompt-reveal-text {
-	font-size: 4rem;
+	font-size: calc(2rem + 2vw);
 	max-width: 80%;
 }
 

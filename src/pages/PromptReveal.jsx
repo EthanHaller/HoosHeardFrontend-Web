@@ -40,8 +40,8 @@ export default function PromptReveal() {
 							<img src={logoImage} alt="Logo" />
 						</div>
 					</div>
-					<div className="d-flex flex-column justify-content-center align-items-center flex-grow-1">
-						<h1 className="text-primary reveal-text">THE DAILY PROMPT IS...</h1>
+					<div className="d-flex flex-column align-items-center flex-grow-1">
+						<h1 className="text-primary reveal-text text-center">THE DAILY PROMPT IS...</h1>
 						<div className="d-flex jusitfy-content-center align-items-center mt-3 bounce-animation" onClick={() => handleScroll()}>
 							<FontAwesomeIcon icon={faChevronDown} className="text-primary" />
 							<h3 className="text-primary px-2">Scroll to view</h3>
