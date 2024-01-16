@@ -1,7 +1,7 @@
 .landing-description {
 	text-align: justify;
-	font-size: calc(0.825rem + 0.25vw);
-	line-height: calc(1.625rem + 0.75vw);
+	font-size: calc(1rem + 0.25vw);
+	line-height: calc(1.75rem + 0.75vw);
 	color: var(--text-secondary);
 	margin-bottom: 1.5rem;
 	max-width: 50ch;
@@ -86,7 +86,7 @@
 }
 
 .middle-row {
-	height: calc(32rem - 14vw);
+	height: calc(30rem - 14vw);
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
