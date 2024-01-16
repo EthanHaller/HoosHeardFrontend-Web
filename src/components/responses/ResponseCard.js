@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircle, faHeart } from "@fortawesome/free-solid-svg-icons"
-import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/free-regular-svg-icons"
-
+import { faCircle, faHeart, faComment as faUncommented } from "@fortawesome/free-solid-svg-icons"
+import { faHeart as faUnliked } from "@fortawesome/free-regular-svg-icons"
 import "../../styles/responses.css"
 import { useAuth } from "../../hooks/useAuth"
 import axios from "axios"
@@ -13,13 +12,7 @@ export default function ResponseCard({ response }) {
 	const [isLiked, setisLiked] = useState(response?.likedByUser)
 	const [numLikes, setNumLikes] = useState(response?.numLikes)
 
-	if (!response) {
-		return (
-			<>
-				<p>Loading...</p>
-			</>
-		)
-	}
+	if (!response) return null
 
 	const handleLikeUnlike = (responseId) => {
 		if (isLiked) {

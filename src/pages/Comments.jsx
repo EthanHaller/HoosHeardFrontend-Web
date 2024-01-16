@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronLeft, faUserPen, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { useParams, Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../hooks/useAuth"
+import useFetch from "../hooks/useFetch"
 import PromptSidebar from "../components/PromptSidebar"
 import CommentCard from "../components/comments/CommentCard"
-import useFetch from "../hooks/useFetch"
-import { useParams, Link, useNavigate } from "react-router-dom"
 import ResponseCard from "../components/responses/ResponseCard"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import "../styles/comments.css"
-import { faChevronLeft, faUserPen, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
-import { useAuth } from "../hooks/useAuth"
 import axios from "axios"
+
+import "../styles/comments.css"
 
 export default function Comments() {
 	const { user, userLoading, logout } = useAuth()
@@ -18,15 +19,14 @@ export default function Comments() {
 	const [text, setText] = useState("")
 
 	useEffect(() => {
-		if (!userLoading) {
-			if (!user) navigate("/")
-			else if (!user.hasResponded) navigate("/reveal")
+		if (!userLoading && (!user || !user.hasResponded)) {
+			navigate("/")
 		}
 	}, [userLoading, user, navigate])
 
 	const { data, isLoading, error } = useFetch("/prompts/latest", !userLoading)
-	const { data: responseData, isLoading: responseLoading, error: responseError } = useFetch(`/responses/one/${user ? user.user._id : ""}/${id}`, !userLoading)
-	const { data: commentsData, isLoading: commentsLoading, error: commentsError } = useFetch(`/comments/${id}`, !userLoading)
+	const { data: responseData, isLoading: responseLoading } = useFetch(`/responses/one/${user ? user.user._id : ""}/${id}`, !userLoading)
+	const { data: commentsData } = useFetch(`/comments/${id}`, !userLoading)
 
 	let sidebarText = "ANONYMOUS RESPONSE TO..."
 	if (user && user.hasResponded && user.responseId === id) {

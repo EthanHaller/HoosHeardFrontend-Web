@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
-import PromptSidebar from "../components/PromptSidebar"
-import "../styles/useranswer.css"
 import axios from "axios"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import PromptSidebar from "../components/PromptSidebar"
+import "../styles/useranswer.css"
 
 export default function UserAnswer() {
 	const { user, userLoading, login, logout } = useAuth()
@@ -43,7 +43,6 @@ export default function UserAnswer() {
 				text: text,
 			})
 			.then((res) => {
-				console.log(res)
 				const newUser = user
 				newUser["responseId"] = res.data.response._id
 				newUser["hasResponded"] = true
@@ -52,7 +51,7 @@ export default function UserAnswer() {
 				setShowModal(false)
 				navigate("/responses")
 			})
-			.catch((err) => console.log(err))
+			.catch((err) => console.error(err))
 	}
 
 	return (
@@ -72,7 +71,13 @@ export default function UserAnswer() {
 									<label htmlFor="userResponseTextarea" className="text-primary textarea-label">
 										Your Response
 									</label>
-									<textarea className="custom-textarea" id="userResponseTextarea" rows="10" maxLength="1800" onChange={handleTextareaChange}></textarea>
+									<textarea
+										className="custom-textarea"
+										id="userResponseTextarea"
+										rows="10"
+										maxLength="1800"
+										onChange={handleTextareaChange}
+									></textarea>
 								</div>
 								<button type="button" className="custom-btn align-self-end mt-1" onClick={() => setShowModal(true)}>
 									Submit
@@ -95,7 +100,10 @@ export default function UserAnswer() {
 													onClick={() => setShowModal(false)}
 												></button>
 											</div>
-											<div className="modal-body text-primary lightest">Are you sure you are ready to submit your response? Due to the nature of the app, you will not be able to edit your response once you submit.</div>
+											<div className="modal-body text-primary lightest">
+												Are you sure you are ready to submit your response? Due to the nature of the app, you will not be able to edit
+												your response once you submit.
+											</div>
 											<div className="modal-footer lightest">
 												<button type="button" className="custom-btn-secondary" data-dismiss="modal" onClick={() => setShowModal(false)}>
 													Cancel

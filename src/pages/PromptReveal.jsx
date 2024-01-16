@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from "react"
-import logoImage from "../images/HoosHeardLogoDark.png"
-import "../styles/reveal.css"
 import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronDown, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../hooks/useAuth"
 import useFetch from "../hooks/useFetch"
+import logoImage from "../images/HoosHeardLogoDark.png"
+import "../styles/reveal.css"
 
 export default function PromptReveal() {
 	const { user, userLoading, logout } = useAuth()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!userLoading) {
-			if (!user) navigate("/")
+		if (!userLoading && !user) {
+			navigate("/")
 		}
 	}, [userLoading, user, navigate])
 
@@ -51,9 +51,7 @@ export default function PromptReveal() {
 				</div>
 				<div className="container-fluid view-height lightest d-flex flex-column" ref={promptContainerRef}>
 					<div className="d-flex flex-column justify-content-center align-items-center flex-grow-1">
-						<h2 className="text-primary text-center p-3 prompt-reveal-text">
-							{data && data.prompt.text}
-						</h2>
+						<h2 className="text-primary text-center p-3 prompt-reveal-text">{data && data.prompt.text}</h2>
 						<Link className="custom-btn mt-5" to="/my-answer">
 							Write your response
 						</Link>

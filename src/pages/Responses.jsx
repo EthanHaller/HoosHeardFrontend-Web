@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react"
-import PromptSidebar from "../components/PromptSidebar"
-import useFetch from "../hooks/useFetch"
-import ResponseCard from "../components/responses/ResponseCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRightFromBracket, faUserPen } from "@fortawesome/free-solid-svg-icons"
+import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "../hooks/useAuth"
+import useFetch from "../hooks/useFetch"
+import PromptSidebar from "../components/PromptSidebar"
+import ResponseCard from "../components/responses/ResponseCard"
 
 import "../styles/responses.css"
-import { Link, useNavigate } from "react-router-dom"
-import { faArrowRightFromBracket, faUserPen } from "@fortawesome/free-solid-svg-icons"
-import { useAuth } from "../hooks/useAuth"
 
 export default function Responses() {
 	const { user, userLoading, logout } = useAuth()
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!userLoading) {
-			if (!user) navigate("/")
-			else if (!user.hasResponded) navigate("/reveal")
+		if (!userLoading && (!user || !user.hasResponded)) {
+			navigate("/")
 		}
 	}, [userLoading, user, navigate])
 
@@ -26,7 +25,7 @@ export default function Responses() {
 	}
 
 	const { data, isLoading, error } = useFetch("/prompts/latest")
-	const { data: responseData, isLoading: isResponseLoading } = useFetch(`/responses/${user ? user.user._id : ""}`)
+	const { data: responseData, isLoading: isResponseLoading } = useFetch(`/responses/${user ? user.user._id : ""}`, !userLoading)
 	const [sortOption, setSortOption] = useState("hot")
 
 	const handleSort = (option) => {

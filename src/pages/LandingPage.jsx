@@ -2,10 +2,10 @@ import React from "react"
 import axios from "axios"
 import { GoogleLogin } from "@react-oauth/google"
 import { useAuth } from "../hooks/useAuth"
-import logoImage from "../images/HoosHeardLogoDark.png"
-import "../styles/landingpage.css"
-import Typewriter from "../components/landingPage/Typewriter"
 import { useNavigate } from "react-router-dom"
+import logoImage from "../images/HoosHeardLogoDark.png"
+import Typewriter from "../components/landingPage/Typewriter"
+import "../styles/landingpage.css"
 
 export default function LandingPage() {
 	const { user, login } = useAuth()
