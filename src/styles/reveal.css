@@ -11,8 +11,8 @@
 }
 
 .reveal-text {
-	font-size: calc(4rem + 2vw);
-	margin-top: 22vh;
+	font-size: calc(3rem + 2vw);
+	margin-top: calc(10rem + 2vw);
 }
 
 .prompt-reveal-text {
