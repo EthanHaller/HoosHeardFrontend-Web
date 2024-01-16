@@ -50,6 +50,16 @@
 	}
 }
 
+@media (max-width: 1200px) {
+	.landing-container {
+		justify-content: flex-start !important;
+	}
+
+	.top-row {
+		margin-top: 1rem;
+	}
+}
+
 .landing-logo {
 	display: flex;
 	justify-content: center;
