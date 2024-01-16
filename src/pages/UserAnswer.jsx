@@ -70,7 +70,7 @@ export default function UserAnswer() {
 							<form className="d-flex flex-column mx-3">
 								<div className="form-group">
 									<label htmlFor="userResponseTextarea" className="text-primary textarea-label">
-										Your Answer
+										Your Response
 									</label>
 									<textarea className="custom-textarea" id="userResponseTextarea" rows="12" maxLength="300" onChange={handleTextareaChange}></textarea>
 								</div>
@@ -95,7 +95,7 @@ export default function UserAnswer() {
 													onClick={() => setShowModal(false)}
 												></button>
 											</div>
-											<div className="modal-body text-primary lightest">Are you sure you are ready to submit your answer?</div>
+											<div className="modal-body text-primary lightest">Are you sure you are ready to submit your response? Due to the nature of the app, you will not be able to edit your response once you submit.</div>
 											<div className="modal-footer lightest">
 												<button type="button" className="custom-btn-secondary" data-dismiss="modal" onClick={() => setShowModal(false)}>
 													Cancel
