@@ -27,14 +27,15 @@ export default function LandingPage() {
 		<>
 			<div className="container-fluid">
 				<div className="row view-height">
-					<div className="col-xl-8 lightest d-flex flex-column justify-content-center align-items-center">
+					<div className="lightest shapedividers_com-5341"></div>
+					<div className="col-xl-8 lightest landing-container">
 						<div className="top-row">
 							<div className="landing-logo">
 								<img src={logoImage} alt="Logo" />
 							</div>
 						</div>
 						<div className="middle-row">
-							<p className="landing-description">
+							<p className="landing-description mx-4">
 								<Typewriter
 									text="Welcome to HoosHeard, a unique social media platform designed for daily self-expression! Every day, users are presented with a thought-provoking question to answer. The catch? Users must submit their responses before gaining access to all other anonymous user responses. The conversations are transient, as each day brings a new question, making it an ever-evolving space for authentic and dynamic interactions. Join HoosHeard to embrace the joy of sharing, connecting, and exploring the myriad voices within our community. "
 									delay={4}
@@ -58,7 +59,7 @@ export default function LandingPage() {
 							</div>
 						</div>
 					</div>
-					<div className="col-xl-4 lightest shapedividers_com-1228"></div>
+					<div className="col-xl-4 d-none d-xl-block lightest shapedividers_com-1228"></div>
 				</div>
 			</div>
 		</>
