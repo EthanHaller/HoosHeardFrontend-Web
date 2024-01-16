@@ -11,8 +11,6 @@ export default function PromptReveal() {
 	const { user, userLoading, logout } = useAuth()
 	const navigate = useNavigate()
 
-	if (!user) navigate("/")
-
 	useEffect(() => {
 		if (!userLoading) {
 			if (!user) navigate("/")

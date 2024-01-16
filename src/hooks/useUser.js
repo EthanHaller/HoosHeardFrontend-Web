@@ -10,7 +10,7 @@ export const useUser = () => {
 
 	const addUser = (user) => {
 		setUser(user)
-		setItem("user", JSON.stringify(user))
+		setItem("user", JSON.stringify(user.user))
 	}
 
 	const removeUser = () => {
