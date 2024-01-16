@@ -60,19 +60,19 @@ export default function UserAnswer() {
 			<div className="container-fluid">
 				<div className="row view-height">
 					<PromptSidebar displayText={"MY RESPONSE TO..."} data={data} isLoading={isLoading} error={error} />
-					<div className="col-lg-7 h-100 lightest d-flex flex-column">
+					<div className="col-lg-7 lightest d-flex flex-column">
 						<span className="d-flex justify-content-end my-3 mx-2">
 							<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
 								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
 							</button>
 						</span>
-						<div className="d-flex flex-column justify-content-center h-100">
-							<form className="d-flex flex-column mx-3">
+						<div className="d-flex flex-column justify-content-center">
+							<form className="d-flex flex-column mx-3 mb-5">
 								<div className="form-group">
 									<label htmlFor="userResponseTextarea" className="text-primary textarea-label">
 										Your Response
 									</label>
-									<textarea className="custom-textarea" id="userResponseTextarea" rows="12" maxLength="300" onChange={handleTextareaChange}></textarea>
+									<textarea className="custom-textarea" id="userResponseTextarea" rows="10" maxLength="300" onChange={handleTextareaChange}></textarea>
 								</div>
 								<button type="button" className="custom-btn align-self-end mt-1" onClick={() => setShowModal(true)}>
 									Submit

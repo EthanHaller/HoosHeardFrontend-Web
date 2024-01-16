@@ -22,7 +22,7 @@
 }
 
 .sidebar-text {
-	font-size: 4rem;
+	font-size: calc(2rem + 2vw);
 	text-align: center;
 }
 
