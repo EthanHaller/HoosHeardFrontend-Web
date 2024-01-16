@@ -62,10 +62,8 @@ export default function Comments() {
 		return <CommentCard comment={comment} key={comment._id} />
 	})
 
-	if(comments.length === 0) {
-		comments = (
-			<h5 className="text-primary">Be the first to comment!</h5>
-		)
+	if (comments.length === 0) {
+		comments = <h5 className="text-primary">Be the first to comment!</h5>
 	}
 
 	return (
@@ -92,7 +90,13 @@ export default function Comments() {
 								<label htmlFor="userResponseTextarea" className="text-primary comment-textarea-label">
 									Write a comment...
 								</label>
-								<textarea className="comment-textarea" id="userResponseTextarea" rows="2" maxLength="300" onChange={handleTextareaChange}></textarea>
+								<textarea
+									className="comment-textarea"
+									id="userResponseTextarea"
+									rows="2"
+									maxLength="1800"
+									onChange={handleTextareaChange}
+								></textarea>
 							</div>
 							<button type="submit" className="custom-btn align-self-end mt-1" onClick={handleConfirmSubmit}>
 								Submit
