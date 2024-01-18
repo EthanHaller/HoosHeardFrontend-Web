@@ -44,7 +44,7 @@ export default function Responses() {
 		if (sortOption === "recent") {
 			return new Date(b.createdAt) - new Date(a.createdAt)
 		} else {
-			return b.likes - a.likes
+			return b.numLikes - a.numLikes
 		}
 	})
 

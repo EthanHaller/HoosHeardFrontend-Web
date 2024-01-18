@@ -25,13 +25,6 @@ export const useAuth = () => {
 						console.error(err)
 						setUserLoading(false)
 					})
-			} else {
-				axios
-					.get(`${process.env.REACT_APP_BACKEND_URL}/prompts/latest`)
-					.then((res) => {
-					})
-					.catch((err) => {
-					})
 			}
 		}
 
