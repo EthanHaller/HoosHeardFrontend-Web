@@ -4,6 +4,7 @@ import { GoogleLogin } from "@react-oauth/google"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import logoImage from "../images/HoosHeardLogoDark.png"
+import Typewriter from "../components/landingPage/Typewriter"
 import "../styles/landingpage.css"
 
 export default function LandingPage() {
@@ -20,7 +21,7 @@ export default function LandingPage() {
 				if (res.data.hasResponded) navigate("/responses")
 				else navigate("/reveal")
 			})
-			.catch(err => console.error(err))
+			.catch((err) => console.error(err))
 	}
 
 	return (
@@ -30,8 +31,8 @@ export default function LandingPage() {
 					<div className="lightest shapedividers_com-5341"></div>
 					<div className="col-xl-8 lightest landing-container">
 						<div className="top-row">
-							<div className="landing-logo">
-								<img src={logoImage} alt="Logo" />
+							<div className="text-primary landing-logo">
+								"<Typewriter text={'HoosHeard"'} delay={75} />
 							</div>
 						</div>
 						<div className="middle-row">
