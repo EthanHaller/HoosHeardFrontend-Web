@@ -58,6 +58,12 @@
 	border-width: 0 0 3px 0;
 }
 
+.nav-buttons {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
 .fontawesome-btn {
 	color: var(--text-color);
 	font-size: 1.25rem;

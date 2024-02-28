@@ -3,7 +3,6 @@ import axios from "axios"
 import { GoogleLogin } from "@react-oauth/google"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
-import logoImage from "../images/HoosHeardLogoDark.png"
 import Typewriter from "../components/landingPage/Typewriter"
 import "../styles/landingpage.css"
 

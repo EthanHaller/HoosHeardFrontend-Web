@@ -72,6 +72,14 @@ export default function Comments() {
 	return (
 		<>
 			<div className="container-fluid">
+				<div className="nav-buttons my-3">
+					<Link to={`/responses/${user ? user.responseId : ""}`} aria-labelledby="My Answer" className="mx-2">
+						<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn" />
+					</Link>
+					<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
+						<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+					</button>
+				</div>
 				<div className="row view-height">
 					<PromptSidebar displayText={sidebarText} data={data} isLoading={isLoading} error={error} />
 					<div className="col-lg-7 lightest">
@@ -79,13 +87,6 @@ export default function Comments() {
 							<Link to={"/responses"} className="p-3">
 								<FontAwesomeIcon icon={faChevronLeft} className="fontawesome-btn" />
 							</Link>
-							<span className="flex-grow-1"></span>
-							<Link to={`/responses/${user ? user.responseId : ""}`} aria-labelledby="My Answer" className="mx-2">
-								<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn" />
-							</Link>
-							<button className="logout-btn mx-2" onClick={() => logout()} aria-labelledby="logout">
-								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
-							</button>
 						</span>
 						{responseLoading ? <p>Loading...</p> : <ResponseCard response={responseData?.response} />}
 						<form className="d-flex flex-column">

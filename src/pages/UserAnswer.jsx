@@ -57,15 +57,15 @@ export default function UserAnswer() {
 	return (
 		<>
 			<div className="container-fluid">
+				<div className="nav-buttons my-3">
+					<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
+						<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+					</button>
+				</div>
 				<div className="row view-height">
 					<PromptSidebar displayText={"MY RESPONSE TO..."} data={data} isLoading={isLoading} error={error} />
 					<div className="col-lg-7 lightest d-flex flex-column">
-						<span className="d-flex justify-content-end my-3 mx-2">
-							<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
-								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
-							</button>
-						</span>
-						<div className="d-flex flex-column justify-content-center">
+						<div className="d-flex flex-column justify-content-center mt-5">
 							<form className="d-flex flex-column mx-3 mb-5">
 								<div className="form-group">
 									<label htmlFor="userResponseTextarea" className="text-primary textarea-label">
@@ -101,7 +101,7 @@ export default function UserAnswer() {
 												></button>
 											</div>
 											<div className="modal-body text-primary lightest">
-												Are you sure you are ready to submit your response? Due to the nature of the app, you will not be able to edit
+												Are you sure you are ready to submit your response? You will not be able to edit
 												your response once you submit.
 											</div>
 											<div className="modal-footer lightest">

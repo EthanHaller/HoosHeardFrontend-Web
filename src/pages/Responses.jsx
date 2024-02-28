@@ -55,6 +55,14 @@ export default function Responses() {
 	return (
 		<>
 			<div className="container-fluid">
+				<div className="nav-buttons my-3">
+					<Link to={`/responses/${user ? user.responseId : ""}`} aria-labelledby="My Answer" className="mx-2">
+						<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn" />
+					</Link>
+					<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
+						<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+					</button>
+				</div>
 				<div className="row view-height">
 					<PromptSidebar displayText={"ANONYMOUS RESPONSES TO..."} data={data} isLoading={isLoading} error={error} />
 					<div className="col-lg-7 lightest">
@@ -65,13 +73,6 @@ export default function Responses() {
 							<p className="text-center p-0 m-0">|</p>
 							<button className={`text-primary sort-btn ${sortOption === "recent" ? "active" : ""} mx-2`} onClick={() => handleSort("recent")}>
 								Recent
-							</button>
-							<span className="flex-grow-1"></span>
-							<Link to={`/responses/${user ? user.responseId : ""}`} aria-labelledby="My Answer" className="mx-2">
-								<FontAwesomeIcon icon={faUserPen} className="fontawesome-btn" />
-							</Link>
-							<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
-								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
 							</button>
 						</span>
 						{responseCards}
