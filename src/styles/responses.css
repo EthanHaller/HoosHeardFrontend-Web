@@ -106,7 +106,3 @@
 .comment-btn:hover {
 	background-color: rgba(0, 0, 0, 0.05);
 }
-
-.card {
-	border: 1px solid var(--text-color) !important;
-}

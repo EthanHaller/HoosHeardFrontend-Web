@@ -25,6 +25,14 @@
     font-size: 1.25em;
 }
 
+.modal-content {
+	border: none;
+}
+
+.modal-header {
+	border: none;
+}
+
 .modal-title {
 	border: none;
 	font-size: 1.5rem;
@@ -37,4 +45,5 @@
 
 .modal-footer {
 	border: none;
+	padding-top: 0px;
 }

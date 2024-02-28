@@ -88,27 +88,20 @@ export default function UserAnswer() {
 									tabIndex="-1"
 									role="dialog"
 								>
-									<div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+									<div className="modal-dialog modal-dialog-centered" role="document">
 										<div className="modal-content">
 											<div className="modal-header dark">
-												<h5 className="modal-title text-primary">Confirm Submission</h5>
-												<button
-													type="button"
-													className="btn-close"
-													data-dismiss="modal"
-													aria-label="Close"
-													onClick={() => setShowModal(false)}
-												></button>
+												<h5 className="modal-title text-primary">Warning</h5>
 											</div>
 											<div className="modal-body text-primary lightest">
 												Are you sure you are ready to submit your response? You will not be able to edit
 												your response once you submit.
 											</div>
 											<div className="modal-footer lightest">
-												<button type="button" className="custom-btn-secondary" data-dismiss="modal" onClick={() => setShowModal(false)}>
+												<button type="button" className="custom-btn-secondary small" data-dismiss="modal" onClick={() => setShowModal(false)}>
 													Cancel
 												</button>
-												<button type="submit" className="custom-btn" onClick={handleConfirmSubmit}>
+												<button type="submit" className="custom-btn small" onClick={handleConfirmSubmit}>
 													Submit
 												</button>
 											</div>

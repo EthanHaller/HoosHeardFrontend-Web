@@ -48,8 +48,8 @@
 	display: inline-block;
 	font-weight: 600;
 	font-size: 1.125rem;
-	padding: 0 2rem;
-	line-height: 50px;
+	padding: 0 1.5rem;
+	line-height: 3rem;
 	text-align: center;
 	text-decoration: none;
 	user-select: none;
@@ -74,4 +74,9 @@
 
 .custom-btn-secondary {
 	background-color: var(--lightest);
+}
+
+.custom-btn.small, .custom-btn-secondary.small {
+	padding: 0 1rem;
+	line-height: 2rem;
 }
