@@ -17,12 +17,12 @@ export default function Comments() {
 	const params = useParams()
 	const id = params.id
 	const [text, setText] = useState("")
+	const [showError, setShowError] = useState(false)
 
 	useEffect(() => {
 		if (!userLoading && !user) {
 			navigate("/")
-		}
-		else if (!userLoading && !user.hasResponded) {
+		} else if (!userLoading && !user.hasResponded) {
 			navigate("/reveal")
 		}
 	}, [userLoading, user, navigate])
@@ -53,7 +53,12 @@ export default function Comments() {
 				console.log(res)
 				navigate(0)
 			})
-			.catch((err) => console.log(err))
+			.catch((err) => {
+				console.info(err)
+				if (err.response.data.flagged) {
+					setShowError(true)
+				}
+			})
 	}
 
 	let comments
@@ -108,6 +113,24 @@ export default function Comments() {
 						</form>
 						<h3 className="text-primary mt-2">Comments</h3>
 						<div className="comments-container">{comments}</div>
+						<div className={`modal fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }} tabIndex="-1" role="dialog">
+							<div className="modal-dialog modal-dialog-centered" role="document">
+								<div className="modal-content">
+									<div className="modal-header dark">
+										<h5 className="modal-title text-primary">Comment Flagged</h5>
+									</div>
+									<div className="modal-body text-primary lightest">
+										Your comment has been flagged as potentially harmful and has not been submitted.
+									</div>
+									<div className="modal-footer lightest">
+										<button type="button" className="custom-btn-secondary small" data-dismiss="modal" onClick={() => setShowError(false)}>
+											Close
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className={`modal-backdrop fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }}></div>
 					</div>
 				</div>
 			</div>

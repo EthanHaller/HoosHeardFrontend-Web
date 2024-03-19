@@ -26,6 +26,7 @@ export default function UserAnswer() {
 
 	const { data, isLoading, error } = useFetch("/prompts/latest")
 
+	const [showError, setShowError] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 	const [text, setText] = useState("")
 
@@ -35,6 +36,7 @@ export default function UserAnswer() {
 
 	const handleConfirmSubmit = (event) => {
 		event.preventDefault()
+		setShowModal(false)
 
 		axios
 			.post(`${process.env.REACT_APP_BACKEND_URL}/responses/create`, {
@@ -51,7 +53,12 @@ export default function UserAnswer() {
 				setShowModal(false)
 				navigate("/responses")
 			})
-			.catch((err) => console.error(err))
+			.catch((err) => {
+				console.info(err)
+				if (err.response.data.flagged) {
+					setShowError(true)
+				}
+			})
 	}
 
 	return (
@@ -94,11 +101,15 @@ export default function UserAnswer() {
 												<h5 className="modal-title text-primary">Warning</h5>
 											</div>
 											<div className="modal-body text-primary lightest">
-												Are you sure you are ready to submit your response? You will not be able to edit
-												your response once you submit.
+												Are you sure you are ready to submit your response? You will not be able to edit your response once you submit.
 											</div>
 											<div className="modal-footer lightest">
-												<button type="button" className="custom-btn-secondary small" data-dismiss="modal" onClick={() => setShowModal(false)}>
+												<button
+													type="button"
+													className="custom-btn-secondary small"
+													data-dismiss="modal"
+													onClick={() => setShowModal(false)}
+												>
 													Cancel
 												</button>
 												<button type="submit" className="custom-btn small" onClick={handleConfirmSubmit}>
@@ -111,6 +122,24 @@ export default function UserAnswer() {
 								<div className={`modal-backdrop fade ${showModal ? "show" : ""}`} style={{ display: showModal ? "block" : "none" }}></div>
 							</form>
 						</div>
+						<div className={`modal fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }} tabIndex="-1" role="dialog">
+							<div className="modal-dialog modal-dialog-centered" role="document">
+								<div className="modal-content">
+									<div className="modal-header dark">
+										<h5 className="modal-title text-primary">Response Flagged</h5>
+									</div>
+									<div className="modal-body text-primary lightest">
+										Your response has been flagged as potentially harmful and has not been submitted.
+									</div>
+									<div className="modal-footer lightest">
+										<button type="button" className="custom-btn-secondary small" data-dismiss="modal" onClick={() => setShowError(false)}>
+											Close
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className={`modal-backdrop fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }}></div>
 					</div>
 				</div>
 			</div>
