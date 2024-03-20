@@ -67,13 +67,13 @@ export default function ResponseCard({ response }) {
 						<div className="col-2 col-lg-1 p-0 h-100">
 							<button className="like-btn" onClick={() => handleLikeUnlike(response._id)}>
 								<FontAwesomeIcon icon={isLiked ? faHeart : faUnliked} className="like-icon" />
-								<p className="m-0 text-primary text-center">{nLikes}</p>
+								<p className="m-0 text-primary text-center number">{nLikes}</p>
 							</button>
 						</div>
 						<div className="col-2 col-lg-1 p-0 h-100 d-flex">
 							<Link to={`/responses/${response._id}`} className="comment-btn">
 								<FontAwesomeIcon icon={faUncommented} className="comment-icon" />
-								<p className="m-0 text-primary text-center">{nComments}</p>
+								<p className="m-0 text-primary text-center number">{nComments}</p>
 							</Link>
 						</div>
 					</div>
