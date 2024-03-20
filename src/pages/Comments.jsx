@@ -61,6 +61,11 @@ export default function Comments() {
 			})
 	}
 
+	const handleLogout = () => {
+		logout()
+		navigate("/")
+	}
+
 	let comments
 	if (isLoading || !responseData || !commentsData) {
 		comments = { comments: [] }

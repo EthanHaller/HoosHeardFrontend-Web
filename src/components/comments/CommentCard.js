@@ -18,7 +18,7 @@ export default function CommentCard({ comment }) {
 					<FontAwesomeIcon icon={faCircle} className="circle-icon" />
 					<h6 className="m-0 text-secondary"> {timeAgo}</h6>
 				</div>
-				<p className="card-text text-primary">{comment.text}</p>
+				<p className="card-text text-body">{comment.text}</p>
 			</div>
 		</div>
 	)
