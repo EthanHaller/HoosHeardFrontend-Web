@@ -112,3 +112,8 @@
 	font-size: 0.95rem;
 	padding: 0rem 1rem 0.5rem 1rem;
 }
+
+.card {
+	border: none;
+	box-shadow: 3px 3px 4px 2px rgba(0, 0, 0, 0.05);
+}
