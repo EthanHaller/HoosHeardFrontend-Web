@@ -4,15 +4,27 @@ import { faCircle, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as faUnliked, faComment as faUncommented } from "@fortawesome/free-regular-svg-icons"
 import "../../styles/responses.css"
 import { useAuth } from "../../hooks/useAuth"
+import useFetch from "../../hooks/useFetch"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-export default function ResponseCard({ response, username }) {
-	const { user } = useAuth()
+export default function MyResponse() {
+	const { user, userLoading } = useAuth()
+
+    let { data: myResponse, isLoading: isLoading} =useFetch(`/responses/mine/${user ? user.user._id : ""}`, !userLoading)
+
+    const response = myResponse != null ? myResponse.response : {
+        "_id": "0",
+        "text": "Loading",
+        "createdAt": "2024-03-19T16:03:05.585Z",
+        "numLikes": 0,
+        "numComments": 0,
+        "likedByUser": false
+    }
+
 	const [isLiked, setisLiked] = useState(response?.likedByUser)
 	const [numLikes, setNumLikes] = useState(response?.numLikes)
 
-	if (!response) return null
 
 	const handleLikeUnlike = (responseId) => {
 		if (isLiked) {
@@ -53,10 +65,10 @@ export default function ResponseCard({ response, username }) {
 	const nComments = nFormatter(response.numComments, 1)
 
 	return (
-		<div key={response._id} className="card mb-3">
+		<div key={response._id} className="card mine mb-3">
 			<div className="card-body">
 				<div className="d-inline-flex align-items-center mb-3">
-					<h5 className="m-0 text-primary">{username ? username : "Anonymous"}</h5>
+					<h5 className="m-0 text-primary">My Response</h5>
 					<FontAwesomeIcon icon={faCircle} className="circle-icon" />
 					<h6 className="m-0 text-secondary"> {timeAgo}</h6>
 				</div>

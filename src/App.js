@@ -2,7 +2,6 @@ import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { AuthProvider } from "./auth/AuthContext"
-import { useAuth } from "./hooks/useAuth"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./theme.css"
 

@@ -1,38 +1,12 @@
-.semicircle {
-	top: 0;
-	left: 0;
-	width: calc(100% + var(--bs-gutter-x));
-	height: 8em;
-	border-radius: 0 0 45% 45%;
-	margin-left: calc(var(--bs-gutter-x) * -0.5);
-	margin-right: calc(var(--bs-gutter-x) * -0.5);
-}
-
-.logo {
+.responses-container {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 8em;
 }
 
-.logo img {
-	max-width: 50%;
-	max-height: 50%;
-	width: auto;
-}
-
-.sidebar-text {
-	font-size: calc(2rem + 2vw);
-	text-align: center;
-}
-
-.prompt-container {
-	width: calc(100% + var(--bs-gutter-x));
-	font-size: 1vw;
-	text-align: center;
-	padding-top: 3em;
-	padding-bottom: 3em;
-	text-wrap: wrap;
+.responses {
+	padding-inline: 1rem;
+	min-width: 60%;
+	min-height: 100vh;
+	margin-left: 40%;
 }
 
 .circle-icon {
@@ -62,6 +36,7 @@
 	position: absolute;
 	top: 0px;
 	right: 0px;
+	margin-block: 1rem;
 }
 
 .fontawesome-btn {
@@ -116,4 +91,21 @@
 .card {
 	border: none;
 	box-shadow: 3px 3px 4px 2px rgba(0, 0, 0, 0.05);
+}
+
+.card.mine {
+	border: 2px solid var(--dark);
+	margin-top: 2rem !important;
+	margin-bottom: 2rem !important;
+}
+
+@media only screen and (max-width: 992px) {
+	.responses-container {
+		flex-direction: column;
+	}
+
+	.responses {
+		margin-left: 0px;
+		min-height: 0px;
+	}
 }

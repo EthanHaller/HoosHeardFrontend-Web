@@ -1,3 +1,14 @@
+.comments-container {
+	display: flex;
+}
+
+.comments {
+	padding-inline: 1rem;
+	min-width: 60%;
+	min-height: 100vh;
+	margin-left: 40%;
+}
+
 .comment-textarea {
 	background-color: var(--lightest);
 	border: 2px solid var(--dark);
@@ -21,9 +32,20 @@
     font-size: 1.5rem;
 }
 
-.comments-container {
+.comment-card-container {
     margin-left: 1rem;
     padding-left: 2rem;
     border: solid var(--text-secondary);
     border-width: 0 0 0 3px;
+}
+
+@media only screen and (max-width: 992px) {
+	.comments-container {
+		flex-direction: column;
+	}
+
+	.comments {
+		margin-left: 0px;
+		min-height: 0px;
+	}
 }

@@ -5,7 +5,7 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import { useAuth } from "../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
-import PromptSidebar from "../components/PromptSidebar"
+import PromptSidebar from "../components/promptSidebar/PromptSidebar"
 import "../styles/useranswer.css"
 
 export default function UserAnswer() {

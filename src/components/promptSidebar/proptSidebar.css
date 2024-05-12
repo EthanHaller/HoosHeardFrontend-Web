@@ -1,0 +1,52 @@
+.sidebar-container {
+    max-width: 40%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+.semicircle {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 8em;
+	border-radius: 0 0 45% 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    padding-top: 1rem;
+    font-size: 4rem;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.sidebar-text {
+	font-size: calc(2rem + 2vw);
+	text-align: center;
+}
+
+.prompt-container {
+	width: 100%;
+	font-size: 1vw;
+	text-align: center;
+	padding-top: 3em;
+	padding-bottom: 3em;
+	text-wrap: wrap;
+}
+
+@media only screen and (max-width: 992px) {
+	.sidebar-container {
+        position: unset;
+		max-width: 100vw;
+        height: auto;
+	}
+}

@@ -1,14 +1,12 @@
-import logoImage from "../images/HoosHeardLogoDark.png"
+import "./proptSidebar.css"
 
 export default function PromptSidebar({ displayText, data, isLoading, error }) {
 	return (
-		<div className="col-lg-5 dark d-flex flex-column">
+		<div className="sidebar-container dark">
 			<div className="semicircle medium">
-				<div className="logo">
-					<img src={logoImage} alt="Logo" />
-				</div>
+				<h1 className="text-primary logo">"HoosHeard"</h1>
 			</div>
-			<div className="d-flex flex-column align-items-center flex-grow-1 pt-10">
+			<div className="sidebar-content">
 				<h2 className="text-primary sidebar-text">{displayText}</h2>
 				<div className="medium prompt-container">
 					{isLoading && <h5 className="text-primary p-3 prompt-text">loading...</h5>}
