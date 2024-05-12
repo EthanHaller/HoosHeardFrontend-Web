@@ -5,7 +5,8 @@
 .responses {
 	padding-inline: 1rem;
 	min-width: 60%;
-	min-height: 100vh;
+	height: 100vh;
+	overflow-y: scroll;
 	margin-left: 40%;
 }
 
@@ -33,7 +34,7 @@
 }
 
 .nav-buttons {
-	position: absolute;
+	/* position: absolute; */
 	top: 0px;
 	right: 0px;
 	margin-block: 1rem;
