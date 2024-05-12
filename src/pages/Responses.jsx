@@ -62,21 +62,23 @@ export default function Responses() {
 
 	return (
 		<div className="responses-container">
-			<div className="nav-buttons">
-				<button className="logout-btn mx-2" onClick={handleLogout} aria-labelledby="logout">
-					<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
-				</button>
-			</div>
 			<PromptSidebar displayText={"ANONYMOUS RESPONSES TO..."} data={promptData} isLoading={isPromptLoading} error={promptError} />
 			<div className="responses lightest" onScroll={handleScroll}>
 				<span className="d-flex align-items-center mx-2 my-3">
-					<button className={`text-primary sort-btn ${sortOption === "hot" ? "active" : ""} mx-2`} onClick={() => handleSort("hot")}>
-						Hot
-					</button>
-					<p className="text-center p-0 m-0">|</p>
-					<button className={`text-primary sort-btn ${sortOption === "recent" ? "active" : ""} mx-2`} onClick={() => handleSort("recent")}>
-						Recent
-					</button>
+					<div className="sort-buttons">
+						<button className={`text-primary sort-btn ${sortOption === "hot" ? "active" : ""} mx-2`} onClick={() => handleSort("hot")}>
+							Hot
+						</button>
+						<p className="text-center p-0 m-0">|</p>
+						<button className={`text-primary sort-btn ${sortOption === "recent" ? "active" : ""} mx-2`} onClick={() => handleSort("recent")}>
+							Recent
+						</button>
+					</div>
+					<div className="nav-buttons">
+						<button className="logout-btn mx-2" onClick={handleLogout} aria-labelledby="logout">
+							<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+						</button>
+					</div>
 				</span>
 				<MyResponse />
 				{responseCards}

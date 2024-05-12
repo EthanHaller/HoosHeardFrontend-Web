@@ -16,6 +16,19 @@
 	color: #5c7c8d;
 }
 
+.sort-buttons {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.nav-buttons {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-left: auto;
+}
+
 .sort-btn {
 	border: none;
 	background-color: transparent;
@@ -31,13 +44,6 @@
 .sort-btn:hover {
 	border: solid var(--dark);
 	border-width: 0 0 3px 0;
-}
-
-.nav-buttons {
-	/* position: absolute; */
-	top: 0px;
-	right: 0px;
-	margin-block: 1rem;
 }
 
 .fontawesome-btn {

@@ -16,6 +16,8 @@ export default function Comments() {
 	const navigate = useNavigate()
 	const params = useParams()
 	const id = params.id
+	const [comments, setComments] = useState([])
+	const [page, setPage] = useState(1)
 	const [text, setText] = useState("")
 	const [showError, setShowError] = useState(false)
 
@@ -29,7 +31,14 @@ export default function Comments() {
 
 	const { data, isLoading, error } = useFetch("/prompts/latest", !userLoading)
 	const { data: responseData, isLoading: responseLoading } = useFetch(`/responses/one/${user ? user.user._id : ""}/${id}`, !userLoading)
-	const { data: commentsData } = useFetch(`/comments/${id}`, !userLoading)
+
+	const { data: commentsData } = useFetch(`/comments/${id}?page=${page}&`, !userLoading)
+
+	useEffect(() => {
+		if (commentsData && commentsData.comments) {
+			setComments((prevComments) => [...prevComments, ...commentsData.comments])
+		}
+	}, [commentsData])
 
 	let sidebarText = "ANONYMOUS RESPONSE TO..."
 	if (user && user.hasResponded && user.responseId === id) {
@@ -66,34 +75,43 @@ export default function Comments() {
 		navigate("/")
 	}
 
-	let comments
-	if (isLoading || !responseData || !commentsData) {
-		comments = { comments: [] }
-	} else comments = commentsData
+	const handleScroll = (e) => {
+		const { offsetHeight, scrollTop, scrollHeight } = e.target
+		if (offsetHeight + scrollTop >= scrollHeight) {
+			setPage((prevPage) => prevPage + 1)
+		}
+	}
 
-	comments = comments.comments.map((comment) => {
+	let commentsCards = comments.map((comment) => {
 		return <CommentCard comment={comment} key={comment._id} />
 	})
 
 	if (comments.length === 0) {
-		comments = <h5 className="text-primary">Be the first to comment!</h5>
+		commentsCards = <h5 className="text-primary">Be the first to comment!</h5>
 	}
 
 	return (
 		<div className="comments-container">
-			<div className="nav-buttons my-3">
-				<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
-					<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
-				</button>
-			</div>
 			<PromptSidebar displayText={sidebarText} data={data} isLoading={isLoading} error={error} />
-			<div className="comments lightest">
+			<div className="comments lightest" onScroll={handleScroll}>
 				<span className="d-flex align-items-center">
 					<Link to={"/responses"} className="p-3">
 						<FontAwesomeIcon icon={faChevronLeft} className="fontawesome-btn" />
 					</Link>
+					<div className="nav-buttons my-3">
+						<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
+							<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+						</button>
+					</div>
 				</span>
-				{responseLoading ? <p>Loading...</p> : <ResponseCard response={responseData?.response} username={user && user.hasResponded && user.responseId === id ? "My Response" : "Anonymous"} />}
+				{responseLoading ? (
+					<p>Loading...</p>
+				) : (
+					<ResponseCard
+						response={responseData?.response}
+						username={user && user.hasResponded && user.responseId === id ? "My Response" : "Anonymous"}
+					/>
+				)}
 				<form className="d-flex flex-column">
 					<div className="form-group">
 						<label htmlFor="userResponseTextarea" className="text-primary comment-textarea-label">
@@ -106,7 +124,7 @@ export default function Comments() {
 					</button>
 				</form>
 				<h3 className="text-primary mt-2">Comments</h3>
-				<div className="comment-card-container">{comments}</div>
+				<div className="comment-card-container">{commentsCards}</div>
 				<div className={`modal fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }} tabIndex="-1" role="dialog">
 					<div className="modal-dialog modal-dialog-centered" role="document">
 						<div className="modal-content">
