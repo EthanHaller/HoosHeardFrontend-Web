@@ -4,6 +4,8 @@
 	--dark: #ffbb98;
 	--text-color: #273841;
 	--text-secondary: #5c7c8d;
+
+	background-color: var(--medium);
 }
 
 @font-face {
