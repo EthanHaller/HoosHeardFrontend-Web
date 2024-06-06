@@ -29,19 +29,17 @@ export default function PromptReveal() {
 	return (
 		<>
 			<div>
-				<div className="container-fluid view-height dark d-flex flex-column shapedividers_com-3810">
+				<div className="view-height dark d-flex flex-column shapedividers_com-3810">
 					<div className="d-flex justify-content-end align-items-center medium logout-bar">
 						<button className="logout-btn mt-3 mx-3" onClick={() => logout()} aria-labelledby="logout">
 							<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
 						</button>
 					</div>
 					<div className="semicircle medium">
-						<div className="logo">
-							<img src={logoImage} alt="Logo" />
-						</div>
+						<h1 className="text-primary logo">"HoosHeard"</h1>
 					</div>
 					<div className="d-flex flex-column align-items-center flex-grow-1">
-						<h1 className="text-primary reveal-text text-center">THE DAILY PROMPT IS...</h1>
+						<h2 className="text-primary reveal-text text-center">THE DAILY PROMPT IS...</h2>
 						<div className="d-flex jusitfy-content-center align-items-center mt-3 bounce-animation" onClick={() => handleScroll()}>
 							<FontAwesomeIcon icon={faChevronDown} className="text-primary" />
 							<h3 className="text-primary px-2">Scroll to view</h3>

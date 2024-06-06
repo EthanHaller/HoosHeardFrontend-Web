@@ -63,17 +63,22 @@ export default function UserAnswer() {
 
 	return (
 		<>
-			<div className="container-fluid">
-				<div className="nav-buttons my-3">
+			<div className="user-answer-container">
+				{/* <div className="nav-buttons my-3">
 					<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
 						<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
 					</button>
-				</div>
-				<div className="row view-height">
-					<PromptSidebar displayText={"MY RESPONSE TO..."} data={data} isLoading={isLoading} error={error} />
-					<div className="col-lg-7 lightest d-flex flex-column">
-						<div className="d-flex flex-column justify-content-center mt-5">
-							<form className="d-flex flex-column mx-3 mb-5">
+				</div> */}
+				<PromptSidebar displayText={"MY RESPONSE TO..."} data={data} isLoading={isLoading} error={error} />
+				<div className="user-answer lightest">
+					<div className="d-flex flex-column">
+						<div className="nav-buttons my-3">
+							<button className="logout-btn mx-2" onClick={() => handleLogout()} aria-labelledby="logout">
+								<FontAwesomeIcon icon={faArrowRightFromBracket} className="fontawesome-btn" />
+							</button>
+						</div>
+						<div className="d-flex flex-column justify-content-center">
+							<form className="d-flex flex-column mx-5 mb-5">
 								<div className="form-group">
 									<label htmlFor="userResponseTextarea" className="text-primary textarea-label">
 										Your Response
