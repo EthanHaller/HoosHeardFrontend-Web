@@ -1,5 +1,5 @@
-import React from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import React, { useEffect } from "react"
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom"
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { AuthProvider } from "./auth/AuthContext"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -16,6 +16,7 @@ export default function App() {
 		<AuthProvider>
 			<GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_AUTH_KEY}>
 				<BrowserRouter>
+					<ScrollToTop />
 					<Routes>
 						<Route path="/" element={<LandingPage />} />
 						<Route path="/reveal" element={<PromptReveal />} />
@@ -27,4 +28,14 @@ export default function App() {
 			</GoogleOAuthProvider>
 		</AuthProvider>
 	)
+}
+
+function ScrollToTop() {
+	const pathName = useLocation()
+
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [pathName])
+
+	return null
 }
