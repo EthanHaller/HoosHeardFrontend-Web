@@ -96,8 +96,14 @@
 .bottom-row {
 	width: 100%;
 	display: flex;
-	justify-content: center;
-	align-items: flex-start;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.disclaimer {
+	font-size: calc(0.75rem + 0.25vw);
+	color: var(--text-secondary);
 }
 
 .shapedividers_com-5341 {
