@@ -28,7 +28,6 @@ const Login = () => {
 				password: password,
 			})
 
-			console.info(response)
 			login(response.data)
 			if (response.data.hasResponded) {
 				navigate("/responses")
