@@ -1,5 +1,3 @@
-// adapted from https://dayvster.com/blog/use-context-for-auth
-
 import { useEffect, useState } from "react"
 import { useUser } from "./useUser"
 import { useLocalStorage } from "./useLocalStorage"
@@ -25,21 +23,25 @@ export const useAuth = () => {
 						console.error(err)
 						setUserLoading(false)
 					})
-			}
-			else {
+			} else {
 				setUserLoading(false)
 			}
 		}
 
 		fetchUser()
-	}, [])
+	}, [addUser, getItem])
 
 	const login = (user) => {
 		addUser(user)
 	}
 
-	const logout = () => {
-		removeUser()
+	const logout = async () => {
+		try {
+			await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/logout`)
+			removeUser()
+		} catch (error) {
+			console.error("Error logging out:", error)
+		}
 	}
 
 	return { user, userLoading, login, logout }
