@@ -42,40 +42,48 @@ const Login = () => {
 	}
 
 	return (
-		<div className="medium d-flex flex-column mt-3">
-			<h1 className="text-primary text-center title">Login</h1>
-			<form onSubmit={handleLogin} className="dark d-flex flex-column col-12 col-md-8 col-lg-6 mx-auto p-5 rounded">
-				<label htmlFor="username" className="text-primary">
-					Username
-				</label>
-				<input
-					id="username"
-					className="custom-textarea mb-3"
-					type="text"
-					placeholder="Username"
-					value={username}
-					maxLength={20}
-					onChange={(e) => setUsername(e.target.value)}
-				/>
-				<label htmlFor="password" className="text-primary">
-					Password
-				</label>
-				<input
-					id="password"
-					className="custom-textarea mb-3"
-					type="password"
-					placeholder="Password"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<button type="submit" className="custom-btn mt-3">
-					Log In
-				</button>
-				<div className="d-flex disclaimer mt-3 mx-2">
-					<p>Don't have an account? </p>
-					<Link to="/signup" className="disclaimer mx-1"><p>Signup</p></Link>
+		<div className="container-fluid">
+			<div className="row view-height">
+				<div className="lightest shapedividers_com-5341"></div>
+				<div className="col-xl-8 lightest landing-container">
+					<h1 className="text-primary text-center title">Login</h1>
+					<form onSubmit={handleLogin} className="d-flex flex-column mx-auto w-75">
+						<label htmlFor="username" className="text-primary">
+							Username
+						</label>
+						<input
+							id="username"
+							className="custom-textarea mb-3"
+							type="text"
+							placeholder="Username"
+							value={username}
+							maxLength={20}
+							onChange={(e) => setUsername(e.target.value)}
+						/>
+						<label htmlFor="password" className="text-primary">
+							Password
+						</label>
+						<input
+							id="password"
+							className="custom-textarea mb-3"
+							type="password"
+							placeholder="Password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+						<button type="submit" className="custom-btn mt-3">
+							Log In
+						</button>
+						<div className="d-flex disclaimer mt-3 mx-2">
+							<p>Don't have an account? </p>
+							<Link to="/signup" className="disclaimer mx-1">
+								<p>Signup</p>
+							</Link>
+						</div>
+					</form>
 				</div>
-			</form>
+				<div className="col-xl-4 d-none d-xl-block lightest shapedividers_com-1228"></div>
+			</div>
 
 			<div className={`modal fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }} tabIndex="-1" role="dialog">
 				<div className="modal-dialog modal-dialog-centered" role="document">
