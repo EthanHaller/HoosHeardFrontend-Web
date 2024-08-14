@@ -1,6 +1,8 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import axios from "axios"
+
+import "../styles/login.css"
 
 const Signup = () => {
 	const [username, setUsername] = useState("")
@@ -39,12 +41,50 @@ const Signup = () => {
 	}
 
 	return (
-		<div>
-			<form onSubmit={handleSignup}>
-				<input type="text" placeholder="Username" value={username} maxLength={20} onChange={(e) => setUsername(e.target.value)} />
-				<input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-				<input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-				<button type="submit">Sign Up</button>
+		<div className="medium d-flex flex-column mt-3">
+			<h1 className="text-primary text-center title">Sign Up</h1>
+			<form onSubmit={handleSignup} className="dark d-flex flex-column col-12 col-md-8 col-lg-6 mx-auto p-5 rounded">
+				<label htmlFor="username" className="text-primary">
+					Username
+				</label>
+				<input
+					id="username"
+					className="custom-textarea mb-3"
+					type="text"
+					placeholder="Username"
+					value={username}
+					maxLength={20}
+					onChange={(e) => setUsername(e.target.value)}
+				/>
+				<label htmlFor="password" className="text-primary">
+					Password
+				</label>
+				<input
+					id="password"
+					className="custom-textarea mb-3"
+					type="password"
+					placeholder="Password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
+				<label htmlFor="confirmPassword" className="text-primary">
+					Confirm Password
+				</label>
+				<input
+					id="confirmPassword"
+					className="custom-textarea mb-3"
+					type="password"
+					placeholder="Confirm Password"
+					value={confirmPassword}
+					onChange={(e) => setConfirmPassword(e.target.value)}
+				/>
+				<button type="submit" className="custom-btn mt-3">
+					Sign Up
+				</button>
+                <div className="d-flex disclaimer mt-3 mx-2">
+					<p>Already have an account? </p>
+					<Link to="/login" className="disclaimer mx-1"><p>Login</p></Link>
+				</div>
 			</form>
 
 			<div className={`modal fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }} tabIndex="-1" role="dialog">
@@ -55,7 +95,7 @@ const Signup = () => {
 						</div>
 						<div className="modal-body text-primary lightest">{errorMessage}</div>
 						<div className="modal-footer lightest">
-							<button type="button" className="custom-btn-secondary small" data-dismiss="modal" onClick={() => setShowError(false)}>
+							<button type="button" className="custom-btn-secondary small" onClick={() => setShowError(false)}>
 								Close
 							</button>
 						</div>

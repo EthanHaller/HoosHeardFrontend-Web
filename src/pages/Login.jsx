@@ -1,7 +1,9 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../hooks/useAuth"
 import axios from "axios"
+
+import "../styles/login.css"
 
 const Login = () => {
 	const [username, setUsername] = useState("")
@@ -26,7 +28,7 @@ const Login = () => {
 				password: password,
 			})
 
-            console.info(response)
+			console.info(response)
 			login(response.data)
 			if (response.data.hasResponded) {
 				navigate("/responses")
@@ -41,11 +43,39 @@ const Login = () => {
 	}
 
 	return (
-		<div>
-			<form onSubmit={handleLogin}>
-				<input type="text" placeholder="Username" value={username} maxLength={20} onChange={(e) => setUsername(e.target.value)} />
-				<input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-				<button type="submit">Log In</button>
+		<div className="medium d-flex flex-column mt-3">
+			<h1 className="text-primary text-center title">Login</h1>
+			<form onSubmit={handleLogin} className="dark d-flex flex-column col-12 col-md-8 col-lg-6 mx-auto p-5 rounded">
+				<label htmlFor="username" className="text-primary">
+					Username
+				</label>
+				<input
+					id="username"
+					className="custom-textarea mb-3"
+					type="text"
+					placeholder="Username"
+					value={username}
+					maxLength={20}
+					onChange={(e) => setUsername(e.target.value)}
+				/>
+				<label htmlFor="password" className="text-primary">
+					Password
+				</label>
+				<input
+					id="password"
+					className="custom-textarea mb-3"
+					type="password"
+					placeholder="Password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
+				<button type="submit" className="custom-btn mt-3">
+					Log In
+				</button>
+				<div className="d-flex disclaimer mt-3 mx-2">
+					<p>Don't have an account? </p>
+					<Link to="/signup" className="disclaimer mx-1"><p>Signup</p></Link>
+				</div>
 			</form>
 
 			<div className={`modal fade ${showError ? "show" : ""}`} style={{ display: showError ? "block" : "none" }} tabIndex="-1" role="dialog">

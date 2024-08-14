@@ -74,6 +74,9 @@
 .disclaimer {
 	font-size: calc(0.75rem + 0.25vw);
 	color: var(--text-secondary);
+	text-decoration: none;
+	border: none;
+	outline: none;
 }
 
 .shapedividers_com-5341 {
