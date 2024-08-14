@@ -25,9 +25,9 @@ export default function Responses() {
 		}
 	}, [userLoading, user, navigate])
 
-	const handleLogout = () => {
-		logout()
+	const handleLogout = async () => {
 		navigate("/")
+		await logout()
 	}
 
 	const { data: promptData, isLoading: isPromptLoading, error: promptError } = useFetch("/prompts/latest")
