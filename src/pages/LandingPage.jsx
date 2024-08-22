@@ -15,9 +15,9 @@ export default function LandingPage() {
 						</div>
 						<div className="middle-row">
 							<p className="landing-description mb-0">
-								Welcome to HoosHeard, an anonymous social media platform designed to help your voice be heard! Every day, you are presented with
-								a thought-provoking question to answer. The catch? You must submit your response before you can see all other anonymous
-								responses. Join HoosHeard to share, connect, and be heard!
+								Welcome to HoosHeard, an anonymous social media platform designed for you to vent or share! Every day, you are presented with
+								a prompt to answer anonymously. The catch? You must submit your response before you can see all other anonymous
+								responses. Join HoosHeard to share, connect, and let your voice be heard!
 							</p>
 						</div>
 						<div className="bottom-row">
